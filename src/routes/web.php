@@ -18,6 +18,7 @@ use App\Http\Controllers\ItemController;
     //return view('welcome');
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
-Route::get('/sell' , [ItemController::class, 'create']);
-Route::post('/sell' , [ItemController::class, 'store']);
-//});
+Route::middleware('auth')->group(function() {
+  Route::get('/sell' , [ItemController::class, 'create']);
+  Route::post('/sell' , [ItemController::class, 'store']);
+});
