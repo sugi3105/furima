@@ -1,21 +1,49 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
+<div class="auth-box">
 
-<h2>会員登録</h2>
+  <div class="box-header">
+    <div class="logo">COACHTECH</div>
+  </div>
 
-<form method="POST" action="/register" class="form">
-  @csrf
+  <div class="box-content">
+    <h2 class="auth-title">会員登録</h2>
 
-  <input type="text" name="name" placeholder="ユーザー名">
+    <form method="POST" action="/register">
+      @csrf
 
-  <input type="email" name="email" placeholder="メールアドレス">
+      <label>ユーザー名</label>
+      <input type="text" name="name">
+      @error('name')
+       <div class="error">{{ $message }}</div>    
+      @enderror
 
-  <input type="password" name="password" placeholder="パスワード">
+      <label>メールアドレス</label>
+      <input type="email" name="email">
+      @error('email')
+       <div class="error">{{ $message }}</div>
+      @enderror
 
-  <input type="password" name="password_confirmation" placeholder="確認用パスワード">
+      <label>パスワード</label>
+      <input type="password" name="password">
+      @error('password')
+       <div class="error">{{ $message }}</div>
+      @enderror
 
-  <button class="btn">登録</button>
-</form>
+      <label>確認用パスワード</label>
+      <input type="password" name="password_confirmation">
+      @error('password_confirmation')
+       <div class="error">{{ $message }}</div>
+      @enderror
+      <button class="register-btn">登録する</button>
+    </form>
 
+    <p class="login-link">
+      <a href="/login">ログインはこちら</a>
+    </p>
+  </div>
+</div>
+
+</div>
 @endsection

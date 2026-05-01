@@ -1,17 +1,31 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
+<div class="auth-box">
 
-<h2>ログイン</h2>
+  <div class="box-header">
+    <div class="logo">COACHTECH</div>
+  </div>
 
-<form method="POST" action="/login" class="form">
-  @csrf
+  <div class="box-content">
+    <h2 class="auth-title">ログイン</h2>
 
-  <input type="email" name="email" placeholder="メールアドレス">
+    <form method="POST" action="/login">
+      @csrf
 
-  <input type="password" name="password" placeholder="パスワード">
+      <label>メールアドレス</label>
+      <input type="email" name="email">
 
-  <button class="btn">ログイン</button>
-</form>
+      <label>パスワード</label>
+      <input type="password" name="password">
 
+      <button class="register-btn">ログインする</button>
+    </form>
+
+    <p class="login-link">
+      <a href="/register">会員登録はこちら</a>
+    </p>
+  </div>
+
+</div>
 @endsection
