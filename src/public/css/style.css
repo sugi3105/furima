@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f5f5;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #333;
+  color: white;
+  padding: 10px 20px;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.container {
+  padding: 20px;
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.item-card {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+.item-card img {
+  width: 100%;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-price {
+  color: red;
+}
+
+.item-detail {
+  display: flex;
+  gap: 30px;
+}
+
+.item-detail img {
+  width: 300px;
+}
+
+.price {
+  font-size: 20px;
+  color: red;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.btn {
+  background: black;
+  color: white;
+  padding: 8px;
+  border: none;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  cursor: pointer;
+}
