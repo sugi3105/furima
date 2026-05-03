@@ -7,15 +7,16 @@
 <body>
 
 <header class="header">
-  <h1><a href="/">COATHTECH</a></h1>
+  <h1><a href="/">COACHTECH</a></h1>
 
-  <div>
+  <div class="header-nav">
     @auth
+      <a href="/mypage" class="btn">マイページ</a>
       <a href="/sell" class="btn">出品</a>
 
       <form method="POST" action="/logout" style="display:inline;">
         @csrf
-        <button class="btn">ログアウト</button>
+        <button class="btn logout-btn">ログアウト</button>
       </form>
     @endauth
 
@@ -25,10 +26,8 @@
     @endguest
   </div>
 </header>
-
-<main class="container">
-  @yield('content')
-</main>
-
+  <main>
+      @yield('content')
+  </main>
 </body>
 </html>

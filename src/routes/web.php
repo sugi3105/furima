@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,17 @@ use App\Http\Controllers\ItemController;
     //return view('welcome');
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
+
 Route::middleware('auth')->group(function() {
+
   Route::get('/sell' , [ItemController::class, 'create']);
   Route::post('/sell' , [ItemController::class, 'store']);
+
+Route::get('/mypage', function () {
+    return view('mypage');
+})->middleware('auth');
+
+Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+
+Route::post('/mypage/profile', [ProfileController::class, 'update']);
 });
