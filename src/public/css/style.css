@@ -4,18 +4,19 @@ body {
 }
 
 .auth-wrapper {
-  min-height: 100vh;
+  min-height: auto;
   background: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 80px;
+  padding-top: 60px;
 }
 
 .auth-box {
   width: 400px;
   background: #fff;
   overflow: hidden;
+  margin: 10px auto 0;
 }
 
 .box-header {
@@ -125,4 +126,8 @@ body {
 
 .logout-btn {
   padding: 0;
+}
+
+.main {
+  min-height: 100vh;
 }

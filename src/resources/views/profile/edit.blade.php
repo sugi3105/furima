@@ -4,10 +4,6 @@
 
  <div class="auth-box">
 
-  <div class="box-header">
-    <div class="logo">COATHTECH</div>
-  </div>
-
 <div class="box-content">
     <h2 class="auth-title">プロフィール設定</h2>
 
@@ -22,19 +18,19 @@
        <label>ユーザー名</label>
        <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}">
        @error('name')
-        <div class="error">{{ message }}</div>
+        <div class="error">{{ $message }}</div>
        @enderror
 
        <label>郵便番号</label>
        <input type="text" name="postcode" value="{{ old('postcode', auth()->user()->postcode) }}">
        @error('postcode')
-        <div class="error">{{ message }}</div>
+        <div class="error">{{ $message }}</div>
        @enderror
 
        <label>住所</label>
        <input type="text" name="address" value="{{ old('address', auth()->user()->address) }}">
        @error('address')
-        <div class="error">{{ message }}</div>
+        <div class="error">{{ $message }}</div>
        @enderror
 
        <label>建物名</label>
@@ -42,5 +38,7 @@
 
        <button class="register-btn">更新する</button>
     </form>
-
+  </div>
 </div>
+
+@endsection
