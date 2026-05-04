@@ -131,3 +131,60 @@ body {
 .main {
   min-height: 100vh;
 }
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.item-card {
+  text-decoration: none;
+  color: #000;
+}
+
+.item-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.item-name {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.item-price {
+  font-weight: bold;
+  font-size: 14px;
+}
+.item-detail {
+  display: flex;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.item-image {
+  margin-top: 36px;
+  margin-left: 45px;
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 600px; 
+  height: 600px;
+  object-fit: cover;
+  
+}
+
+.buy-btn {
+  background: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin: 20px 0;
+  cursor: pointer;
+}
