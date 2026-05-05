@@ -32,4 +32,6 @@ Route::get('/mypage', function () {
 Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 
 Route::post('/mypage/profile', [ProfileController::class, 'update']);
+Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
+Route::post('/item/{item}/comment', [CommentController::class, 'store']);
 });

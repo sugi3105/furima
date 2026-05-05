@@ -17,4 +17,14 @@ class Item extends Model
         'img_url',
         'condition'
     ];
+
+    public function likes()
+    {
+      return $this->hasMany(Like::class);
+    }
+
+    public function comments()
+    {
+      return $this->hasMany(Comment::class);
+    }
 }
