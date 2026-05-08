@@ -15,8 +15,10 @@ class ItemSeeder extends Seeder
     public function run()
     {
        Item::create([
+        'user_id' => 1,
          'name' => '腕時計',
          'price' => 15000,
+         'is_sold' => true,
          'brand' => 'Rolax',
          'description' => 'スタイリッシュな腕時計',
          'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
@@ -24,6 +26,7 @@ class ItemSeeder extends Seeder
     ]);
 
        Item::create([
+        'user_id' => 1,
          'name' => 'HDD',
          'price' => 5000,
          'brand' => '西芝',
@@ -32,6 +35,7 @@ class ItemSeeder extends Seeder
          'condition' => '目立った傷や汚れなし'
     ]);
         Item::create([
+         'user_id' => 1,
          'name' => '玉ねぎ３束',
          'price' => 300,
          'brand' => 'なし',
@@ -40,6 +44,7 @@ class ItemSeeder extends Seeder
          'condition' => 'やや傷や汚れあり'
     ]);
         Item::create([
+         'user_id' => 1,
          'name' => '革靴',
          'price' => 4000,
          'brand' => '',
@@ -48,6 +53,7 @@ class ItemSeeder extends Seeder
          'condition' => '状態が悪い'
     ]);  
         Item::create([
+           'user_id' => 1,
          'name' => 'ノートPC',
          'price' => 45000,
          'brand' => '',
@@ -56,6 +62,7 @@ class ItemSeeder extends Seeder
          'condition' => '良好'
     ]);
         Item::create([
+         'user_id' => 1,
          'name' => 'マイク',
          'price' => 8000,
          'brand' => 'なし',
@@ -64,6 +71,7 @@ class ItemSeeder extends Seeder
          'condition' => '目立った傷や汚れなし'
     ]);  
         Item::create([
+         'user_id' => 1,
          'name' => 'ショルダーバッグ',
          'price' => 3500,
          'brand' => '',
@@ -72,6 +80,7 @@ class ItemSeeder extends Seeder
          'condition' => 'やや傷や汚れあり'
     ]);
         Item::create([
+         'user_id' => 1,
          'name' => 'タンブラー',
          'price' => 500,
          'brand' => 'なし',
@@ -80,6 +89,7 @@ class ItemSeeder extends Seeder
          'condition' => '状態が悪い'
     ]); 
         Item::create([
+         'user_id' => 2,
          'name' => 'コーヒーミル',
          'price' => 4000,
          'brand' => 'Starbacks',
@@ -88,6 +98,7 @@ class ItemSeeder extends Seeder
          'condition' => '良好'
     ]);
         Item::create([
+         'user_id' => 2,
          'name' => 'メイクセット',
          'price' => 2500,
          'brand' => '',

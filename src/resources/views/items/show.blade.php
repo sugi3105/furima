@@ -31,7 +31,9 @@
       <p>{{ $item->likes->count() }}</p>
     </div>
 
-    <button class="buy-btn">購入手続きへ</button>
+    <a href="/purchase/{{ $item->id }}" class="buy-btn">
+       購入手続きへ
+    </a>
 
     <h3>商品説明</h3>
     <p>{{ $item->description }}</p>
