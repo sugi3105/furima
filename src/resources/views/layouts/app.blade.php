@@ -8,7 +8,13 @@
 
 <header class="header">
   <h1><a href="/">COACHTECH</a></h1>
-
+     <form action="/" method="GET" class="searth-form">
+      <input type="text"
+             name="keyword"
+             placeholder="なにをお探しですか?"
+             value="{{ request('keyword') }}">
+     </form>
+     
   <div class="header-nav">
     @auth
       <a href="/mypage" class="btn">マイページ</a>

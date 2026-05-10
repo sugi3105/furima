@@ -8,9 +8,20 @@ use App\Models\Like;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::where('user_id', '!=', auth()->id())->get();
+        $query = Item::query();
+
+        if ($request->filled('keyword')) {
+            $query->where('name', 'like', '%'. $request->keyword . '%');
+        }
+
+        if (auth()->check()) {
+            $query->where('user_id', '!=', auth()->id());
+        }
+
+        $items = $query->get();
+
         return view('items.index', compact('items'));
     }
 
@@ -30,13 +41,23 @@ class ItemController extends Controller
         return redirect('/');
     }
 
-    public function mylist()
+    public function mylist(Request $request)
     {
-        $item = Item::whereHas('likes', function ($query) {
+        if (!auth()->check()) {
+        $items = collect();
+        return view('mylist', compact('items'));
+    }
+        $query = Item::whereHas('likes', function ($query) {
             $query->where('user_id' , auth()->id());
-        })->get();
+        });
 
-        return view('mylist', compact('item'));
+        //if ($request->filled('keyword')) {
+        //$query->where('name', 'like', '%' . $request->keyword . '%');
+    //}
+
+        $items = $query->get();
+
+        return view('mylist', compact('items'));
         }
     }
 

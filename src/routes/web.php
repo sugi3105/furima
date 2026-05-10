@@ -20,6 +20,7 @@ use App\Http\Controllers\LikeController;
     //return view('welcome');
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
+Route::get('/mylist', [ItemController::class, 'mylist']);
 
 Route::middleware('auth')->group(function() {
 
@@ -38,5 +39,4 @@ Route::post('/item/{item}/comment', [CommentController::class, 'store']);
 Route::get('/purchase/{item}', function ($item) {
     return '購入画面';
 });
-Route::get('/mylist/', [ItemController::class, 'mylist']);
 });
