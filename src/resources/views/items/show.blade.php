@@ -10,6 +10,7 @@
 
   <div class="item-info">
     <h2>{{ $item->name }}</h2>
+    <p class="brand-name">{{ $item->brand }}</p>
     <p>¥{{ number_format($item->price) }}</p>
 
     <div class="item-actions">
@@ -38,9 +39,15 @@
     <h3>商品説明</h3>
     <p>{{ $item->description }}</p>
 
-    <h3>コメント</h3>
+    <h3>商品情報</h3>
+    <p>商品の状態:{{ $item->condition }}</p>
+    
+
+
+    <h3>コメント({{ $item->comments->count() }})</h3>
 
     @foreach($item->comments as $comment)
+      <p>{{ $comment->user->name }}</p>
       <p>{{ $comment->content }}</p>
     @endforeach
 
@@ -53,3 +60,4 @@
   </div>
 
 </div>
+@endsection
