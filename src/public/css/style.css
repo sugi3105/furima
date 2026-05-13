@@ -180,6 +180,16 @@ body {
   object-fit: cover;
 }
 
+item-actions {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.comment-icon {
+  text-align: center;
+}
+
 .buy-btn {
   background: red;
   color: white;
@@ -225,4 +235,28 @@ body {
 .brand-name {
   color: #666;
   font-size: 14px;
+}
+
+.category-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-tag input {
+  display: none;
+}
+
+.category-tag span {
+  display: inline-block;
+  padding: 5px 15px;
+  border: 1px solid #ff5a5f;
+  border-radius: 20px;
+  color: #ff5a5f;
+  cursor: pointer;
+}
+
+.category-tag input:checked + span {
+  background-color: #ff5a5f;
+  color: white;
 }

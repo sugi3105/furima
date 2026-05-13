@@ -7,8 +7,10 @@
 <body>
 
 <header class="header">
-  <h1><a href="/">COACHTECH</a></h1>
-     <form action="/" method="GET" class="searth-form">
+  <a href="/">
+    <img src="{{ asset('images/logo.png') }}" alt="logo">
+  </a>
+     <form action="/" method="GET" class="search-form">
       <input type="text"
              name="keyword"
              placeholder="なにをお探しですか?"

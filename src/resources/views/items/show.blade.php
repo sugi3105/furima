@@ -17,20 +17,26 @@
       @php
         $liked = $item->likes->where('user_id', auth()->id())->count();
       @endphp
+     <div class="like-area">
+       <form method="POST" action="/item/{{ $item->id }}/like">
+         @csrf
 
-      <form method="POST" action="/item/{{ $item->id }}/like">
-        @csrf
-        <button type="submit" style="background:none; border:none;">
-          @if($liked)
-          <img src="{{ asset('images/heart_active.png') }}">
-          @else
-          <img src="{{ asset('images/heart_default.png') }}">
-          @endif
-        </button>
-      </form>
+         <button type="submit" style="background:none; border:none;">
+           @if($liked)
+           <img src="{{ asset('images/heart_active.png') }}">
+           @else
+           <img src="{{ asset('images/heart_default.png') }}">
+           @endif
+         </button>
+        </form>
 
-      <p>{{ $item->likes->count() }}</p>
-    </div>
+       <p>{{ $item->likes->count() }}</p>
+      </div>
+
+      <div class="comment-icon">
+        <img src="{{ asset('images/comment.png') }}">
+        <p>{{ $item->comments->count() }}</p>   
+      </div>
 
     <a href="/purchase/{{ $item->id }}" class="buy-btn">
        購入手続きへ
