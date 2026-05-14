@@ -16,7 +16,8 @@ class Item extends Model
         'brand',
         'description',
         'img_url',
-        'condition'
+        'condition',
+        'user_id',
     ];
 
     public function likes()

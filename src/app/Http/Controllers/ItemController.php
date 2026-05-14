@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Like;
+use App\Models\Category;
+use App\Http\Requests\ItemRequest;
+
 
 class ItemController extends Controller
 {
@@ -33,11 +36,25 @@ class ItemController extends Controller
 
     public function create()
     {
-        return view('items.create');
+        $categories = Category::all();
+          
+        return view('items.create', compact('categories'));
     }
     public function store(ItemRequest $request)
     {
-        Item::create($request->all());
+        $item = Item::create([
+          'name' => $request->name,
+          'price' => $request->price,
+          'brand' => $request->brand,
+          'description' => $request->description,
+          'img_url' => $request->img_url,
+          'condition' => $request->condition,
+          'user_id' => auth()->id(),
+        ]);
+        
+
+        $item->categories()->sync($request->categories);
+
         return redirect('/');
     }
 

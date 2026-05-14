@@ -13,7 +13,7 @@ class CreateCategoriesItemTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories_item', function (Blueprint $table) {
+        Schema::create('category_item', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('item_id')
