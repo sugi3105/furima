@@ -73,6 +73,11 @@
 
     <form method="POST" action="/item/{{ $item->id }}/comment">
       @csrf
+
+    @error('content')
+     <p>{{ $message }}</p>
+    @enderror
+    
       <textarea name="content"></textarea>
       <button>コメントする</button>
     </form>
