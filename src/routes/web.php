@@ -5,6 +5,7 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\PurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,6 @@ Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 Route::post('/mypage/profile', [ProfileController::class, 'update']);
 Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
 Route::post('/item/{item}/comment', [CommentController::class, 'store']);
-Route::get('/purchase/{item}', function ($item) {
-    return '購入画面';
+Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
 });
-});
+

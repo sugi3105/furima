@@ -226,6 +226,18 @@ item-actions {
   border-bottom: 1px solid #ccc;
 }
 
+.item-info img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.item-info {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 .tab {
   text-decoration: none;
   color: #000;

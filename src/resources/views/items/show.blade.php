@@ -67,7 +67,6 @@
     <h3>コメント({{ $item->comments->count() }})</h3>
 
     @foreach($item->comments as $comment)
-      <p>{{ $comment->user->name }}</p>
       <p>{{ $comment->content }}</p>
     @endforeach
 
