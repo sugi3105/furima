@@ -4,7 +4,7 @@
 
 <div class="purchase-left">
 
- <div class="item-info">
+ <div class="parchase-item-info">
     <img src="{{ $item->img_url }}">
 
      <div>
@@ -44,6 +44,9 @@
         <option>コンビニ支払い</option>
         <option>カード支払い</option>
     </div>
+    
+    <form action="/purchase/{{ $item->id }}" method="POST">
+        @csrf
 
     <button>購入する</button>
   </div>

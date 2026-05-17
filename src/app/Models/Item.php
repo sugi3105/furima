@@ -18,6 +18,8 @@ class Item extends Model
         'img_url',
         'condition',
         'user_id',
+        'is_sold',
+        'purchaser_id',
     ];
 
     public function likes()

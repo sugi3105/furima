@@ -14,5 +14,15 @@ class PurchaseController extends Controller
         return view('items.purchase', compact('item', 'user'));
     }
 
+    public function store(Item $item)
+    {
+        $item->update([
+            "is_sold" => true,
+            'purchaser_id' => auth()->id(),
+        ]);
+
+        return redirect('/');
+    }
+
 
 }

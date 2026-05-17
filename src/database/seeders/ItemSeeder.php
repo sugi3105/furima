@@ -18,7 +18,6 @@ class ItemSeeder extends Seeder
         'user_id' => 1,
          'name' => '腕時計',
          'price' => 15000,
-         'is_sold' => true,
          'brand' => 'Rolax',
          'description' => 'スタイリッシュな腕時計',
          'img_url' => 'https://coachtech-matter.s3.ap-northeast-1.amazonaws.com/image/Armani+Mens+Clock.jpg',
