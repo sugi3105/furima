@@ -4,7 +4,7 @@
 
 <div class="purchase-left">
 
- <div class="parchase-item-info">
+ <div class="purchase-item-info">
     <img src="{{ $item->img_url }}">
 
      <div>
@@ -13,7 +13,7 @@
         <p>¥{{ number_format($item->price) }}</p>
      </div>
      
-  </div>
+ </div>
 
     <hr>
     <div class="payment">
@@ -33,24 +33,32 @@
         <p>{{ $user->address }}</p>
     </div>
     
-    <div class="puchase-right">
+    <div class="purchase-right">
 
-    <div class="puchase-summary">
+    <div class="purchase-summary">
         <p>商品代金</p>
         <p>¥{{ number_format($item->price) }}</p>
     </div>
 
-    <div class="puchase-summary">
-        <option>コンビニ支払い</option>
-        <option>カード支払い</option>
+    <div class="purchase-summary">
+        <p>カード支払い</p>
     </div>
     
     <form action="/purchase/{{ $item->id }}" method="POST">
         @csrf
 
-    <button>購入する</button>
+      <button>購入する</button>
+    </form>
   </div>
 </div>
+    <script>
+      const select = document.getElementById('payment-select');
+      const payment = document.getElementById('payment-method');
+
+      select.addEventListener('change', function () {
+       payment.textContent = select.value;
+});
+    </script>
 
 @endsection
 
