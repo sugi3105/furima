@@ -3,7 +3,7 @@
 # GitHub から git clone する
 git clone git@github.com:sugi3105/furima.git
 
-# clone した weight フォルダに移動する
+# clone した furima フォルダに移動する
 cd furima
 
 # docker でビルドする
@@ -44,7 +44,7 @@ DB_PASSWORD=laravel_pass
    `MySQL8.0.26`
 
 ## ER図
-![ER図](./er.png)
+![ER図](drawio.png)
 
 
 

@@ -30,7 +30,15 @@
     <div class="address">
         <h3>配送先</h3>
 
-        <p>{{ $user->address }}</p>
+        @if($item->shipping_address)
+          <p> {{ $item->shipping_address }}</p>
+        @else
+          <p> {{ session('address', $user->address) }}</p>
+        @endif      
+
+        <a href="/purchase/address/{{ $item->id }}">
+            変更する
+        </a>
     </div>
     
     <div class="purchase-right">

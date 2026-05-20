@@ -39,6 +39,9 @@ Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
 Route::post('/item/{item}/comment', [CommentController::class, 'store']);
 Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
 Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
+Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
+Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
+Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
 });
 
 
