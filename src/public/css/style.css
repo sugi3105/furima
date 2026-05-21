@@ -116,6 +116,10 @@ body {
   align-items: center;
 }
 
+.header img {
+  height: 40px;
+}
+
 .btn {
   background: none;
   border: none;

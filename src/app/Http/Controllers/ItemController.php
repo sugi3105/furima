@@ -76,5 +76,25 @@ class ItemController extends Controller
 
         return view('mylist', compact('items'));
         }
-    }
+
+        public function mypage()
+{
+    $user = auth()->user();
+
+    $sellItems = Item::where(
+        'user_id',
+        auth()->id()
+    )->get();
+
+    $purchasedItems = Item::where(
+        'purchaser_id',
+        auth()->id()
+    )->get();
+
+    return view('mypage', compact(
+        'user',
+        'sellItems',
+        'purchasedItems'
+    ));
+    }}
 

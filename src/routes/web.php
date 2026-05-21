@@ -27,10 +27,8 @@ Route::get('/mylist', [ItemController::class, 'mylist']);
 Route::middleware('auth')->group(function() {
  Route::get('/sell' , [ItemController::class, 'create']);
  Route::post('/sell' , [ItemController::class, 'store']);
+ Route::get('/mypage', [ItemController::class, 'mypage']);
 
-Route::get('/mypage', function () {
-    return view('mypage');
-})->middleware('auth');
 
 Route::get('/mypage/profile', [ProfileController::class, 'edit']);
 
