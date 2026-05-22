@@ -19,8 +19,8 @@ class PurchaseController extends Controller
         $item->update([
             "is_sold" => true,
             'purchaser_id' => auth()->id(),
-            'shipping_address' =>
-                 session('address', auth()->user()->address),
+            //'shipping_address' => $request->address,
+                 
         ]);
 
         return redirect('/');
@@ -35,8 +35,8 @@ class PurchaseController extends Controller
 
     public function updateAddress(Request $request, Item $item)
     {
-        session([
-            'address' => $request->address,
+        $item->update([
+            'shipping_address' => $request->address,
         ]);
 
         return redirect("/purchase/{$item->id}");

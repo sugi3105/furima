@@ -20,6 +20,7 @@ class Item extends Model
         'user_id',
         'is_sold',
         'purchaser_id',
+        'shipping_address',
     ];
 
     public function likes()
