@@ -2,44 +2,120 @@
 
 @section('content')
 
-@if ($errors->any())
+<div class="sell-container">
 
-  <ul>
-    @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-    @endforeach
-  </ul>
+ <h2>商品の出品</h2>
 
-@endif
-
-<form action="/sell" method="POST" class="form">
-  @csrf
-
-  <input type="text" name="name" placeholder="商品名">
-  <input type="number" name="price" placeholder="価格">
-  <input type="text" name="brand" placeholder="ブランド">
-  <textarea name="description" placeholder="説明"></textarea>
-  <input type="text" name="img_url" placeholder="画像URL">
-  <input type="text" name="condition" placeholder="状態">
-
-  <h3>カテゴリー</h3>
-
-  <div class="category-list">
-
-   @foreach($categories as $category)
-
-    <label class="category-tag">
-
-    <input type="checkbox"
-           name="categories[]"
-           value="{{ $category->id }}">
-    <span>{{ $category->name }}</span>
-    </label>
-   @endforeach
-  </div>
-  <button type="submit">出品</button>
-</form>
+ <form action="/sell" method="POST"
+       enctype="multipart/form-data" class="sell-form">
+    @csrf
   
+    <div class="form-group">
+      <label>商品画像</label>
 
+      <input type="file" name="img_url">
+      @error('img_url')
+       <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
 
+    <div class="form-group">
+      <h3>カテゴリー</h3>
+
+      <div class="category-list">
+
+        @foreach($categories as $category)
+
+         <label class="category-tag">
+
+          <input type="checkbox"
+             name="categories[]"
+             value="{{ $category->id }}">
+
+          <span>{{ $category->name }}</span>
+         </label>
+        @endforeach
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>商品の状態</label>
+
+      <select name="condition">
+
+        <option value="">選択してください</option>
+
+        <option value="良好">良好</option>
+
+        <option value="目立った傷なし">
+          目立った傷なし
+        </option>
+
+        <option value="やや傷あり">
+          やや傷あり
+        </option>
+
+      </select>
+
+      @error('condition')
+        <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
+
+    {{-- 商品名 --}}
+    <div class="form-group">
+      <label>商品名</label>
+
+      <input type="text"
+             name="name"
+             value="{{ old('name') }}">
+
+      @error('name')
+        <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
+
+    {{-- ブランド --}}
+    <div class="form-group">
+      <label>ブランド名</label>
+
+      <input type="text"
+             name="brand"
+             value="{{ old('brand') }}">
+
+      @error('brand')
+        <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
+
+    {{-- 商品説明 --}}
+    <div class="form-group">
+      <label>商品の説明</label>
+
+      <textarea name="description">{{ old('description') }}</textarea>
+
+      @error('description')
+        <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
+
+    {{-- 販売価格 --}}
+    <div class="form-group">
+      <label>販売価格</label>
+
+      <input type="number"
+             name="price"
+             value="{{ old('price') }}">
+
+      @error('price')
+        <p class="error">{{ $message }}</p>
+      @enderror
+    </div>
+
+    <button type="submit" class="sell-btn">
+      出品する
+    </button>
+
+  </form>
+</div>
 @endsection
