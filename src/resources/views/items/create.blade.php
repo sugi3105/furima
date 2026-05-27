@@ -47,12 +47,16 @@
 
         <option value="良好">良好</option>
 
-        <option value="目立った傷なし">
-          目立った傷なし
+        <option value="目立った傷や汚れなし">
+          目立った傷や汚れなし
         </option>
 
-        <option value="やや傷あり">
-          やや傷あり
+        <option value="やや傷や汚れあり">
+          やや傷や汚れあり
+        </option>
+
+        <option value="状態が悪い">
+          状態が悪い
         </option>
 
       </select>
@@ -62,7 +66,6 @@
       @enderror
     </div>
 
-    {{-- 商品名 --}}
     <div class="form-group">
       <label>商品名</label>
 
@@ -75,7 +78,6 @@
       @enderror
     </div>
 
-    {{-- ブランド --}}
     <div class="form-group">
       <label>ブランド名</label>
 
@@ -88,7 +90,6 @@
       @enderror
     </div>
 
-    {{-- 商品説明 --}}
     <div class="form-group">
       <label>商品の説明</label>
 
@@ -99,7 +100,6 @@
       @enderror
     </div>
 
-    {{-- 販売価格 --}}
     <div class="form-group">
       <label>販売価格</label>
 

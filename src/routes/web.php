@@ -24,22 +24,24 @@ Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
 Route::get('/mylist', [ItemController::class, 'mylist']);
 
-Route::middleware('auth')->group(function() {
+Route::middleware(['auth', 'verified'])->group(function() {
+
  Route::get('/sell' , [ItemController::class, 'create']);
  Route::post('/sell' , [ItemController::class, 'store']);
+
  Route::get('/mypage', [ItemController::class, 'mypage']);
 
+ Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+ Route::post('/mypage/profile', [ProfileController::class, 'update']);
 
-Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+ Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
+ Route::post('/item/{item}/comment', [CommentController::class, 'store']);
 
-Route::post('/mypage/profile', [ProfileController::class, 'update']);
-Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
-Route::post('/item/{item}/comment', [CommentController::class, 'store']);
-Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
-Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
-Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
-Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
-Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
+ Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
+ Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
+ 
+ Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
+ Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
 });
 
 

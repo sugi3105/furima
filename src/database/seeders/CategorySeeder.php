@@ -22,7 +22,13 @@ class CategorySeeder extends Seeder
             'レディース',
             '本',
             'ゲーム',
-            '洋服',
+            'コスメ',
+            'スポーツ',
+            'キッチン',
+            'ハンドメイド',
+            'アクセサリー',
+            'おもちゃ',
+            'ベビー・キッズ',
         ];
 
         foreach ($categories as $category) {
