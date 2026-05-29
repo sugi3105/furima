@@ -6,6 +6,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PurchaseController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +26,22 @@ Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
 Route::get('/mylist', [ItemController::class, 'mylist']);
 
-Route::middleware(['auth', 'verified'])->group(function() {
+Route::middleware('auth')->group(function() {
+
+ Route::get('/email/verify', function() {
+    return view('auth.verify-email');
+ })->name('verification.notice');
+
+ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+
+    $request->fulfill();
+
+    return redirect('/mypage/profile');
+
+ })->middleware(['signed'])->name('verification.verify');
+
+ 
+ Route::middleware('verified')->group(function() {
 
  Route::get('/sell' , [ItemController::class, 'create']);
  Route::post('/sell' , [ItemController::class, 'store']);
@@ -43,5 +60,5 @@ Route::middleware(['auth', 'verified'])->group(function() {
  Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
  Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
 });
-
+});
 

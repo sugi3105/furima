@@ -17,6 +17,7 @@ class AddProfileFieldsToUsersTable extends Migration
             $table->string('postcode')->nullable();
             $table->string('address')->nullable();
             $table->string('building')->nullable();
+            
         });
     }
 

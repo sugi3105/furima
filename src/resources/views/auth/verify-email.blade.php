@@ -24,7 +24,7 @@
      <button>
         認証メールを再送する
      </button>
-    </form>
+   </form>
 </div>
 
 @endsection
