@@ -70,9 +70,18 @@ class FortifyServiceProvider extends ServiceProvider
        if (!$user || !Hash::check($request->password, $user->password)) {
          throw ValidationException::withMessages([
             'email' => ['ログイン情報が登録されていません'],
-        ]);
+          ]);
     }
+       if (
+           !$user->hasVerifiedEmail() &&
+           !session()->has('verification-mail-sent')
+         )  {
+           $user->sendEmailVerificationNotification();
 
-    return $user;
+           session(['verification-mail-sent' => true]);
+        }
+       
+      return $user;
 });
-    }}
+    }
+}
