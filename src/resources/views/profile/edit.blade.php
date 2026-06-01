@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="auth-box">
 
- <div class="auth-box">
-
-<div class="box-content">
+ <div class="box-content">
     <h2 class="auth-title">プロフィール設定</h2>
+
+    <form method="POST" action="/mypage/profile"
+          enctype="multipart/form-data">
+    @csrf
 
     <div class="profile-image">
         <div class="avatar"></div>
-        <button class="image-btn">画像を選択する</button>
+        <input type="file" name="profile_image">
     </div>
-
-    <form method="POST" action="/mypage/profile">
-    @csrf
 
        <label>ユーザー名</label>
        <input type="text" name="name" value="{{ old('name', auth()->user()->name) }}">

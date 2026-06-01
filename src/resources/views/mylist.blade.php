@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="item-tabs">
-  <a href="/" class="tab">おすすめ</a>
-  <a href="/mylist" class="tab">マイリスト</a>
+  <a href="/?keyword={{ request('keyword') }}" class="tab">おすすめ</a>
+  <a href="/mylist?keyword={{ request('keyword') }}" class="tab">マイリスト</a>
 </div>
 
 <div class="item-list">

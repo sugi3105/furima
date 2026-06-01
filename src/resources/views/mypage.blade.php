@@ -4,7 +4,7 @@
 <div class="auth-box">
   <div class="box-content">
 
-      <img src="{{ $user->profile_image }}">
+      <img src="{{ asset('storage/'. $user->profile_image) }}">
 
       <h2>{{ $user->name }}</h2>
 
