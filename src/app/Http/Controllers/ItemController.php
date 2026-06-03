@@ -42,12 +42,15 @@ class ItemController extends Controller
     }
     public function store(ItemRequest $request)
     {
+        $path = $request->file('img_url')
+                        ->store('items', 'public');
+
         $item = Item::create([
           'name' => $request->name,
           'price' => $request->price,
           'brand' => $request->brand,
           'description' => $request->description,
-          'img_url' => $request->img_url,
+          'img_url' => $path,
           'condition' => $request->condition,
           'user_id' => auth()->id(),
         ]);

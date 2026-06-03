@@ -12,7 +12,7 @@
     <a href="/item/{{ $item->id }}" class="item-card">
       <div class="item-image-wrapper">
 
-       <img src="{{ $item->img_url }}">
+       <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
 
        @if($item->is_sold)
         <p class="sold">Sold</p>

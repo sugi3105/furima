@@ -5,7 +5,7 @@
 <div class="item-detail">
 
   <div class="item-image">
-    <img src="{{ $item->img_url }}">
+    <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
   </div>
 
   <div class="item-info">
