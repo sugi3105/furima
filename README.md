@@ -36,9 +36,14 @@ DB_PASSWORD=laravel_pass
 8. ストレージリンク作成
 .   php artisan storage:link
 
-8. 実行確認  
+9. 実行確認  
    `http://localhost/` へアクセスして動作確認をする  
    エラーが出て表示できない場合は `sudo chmod -R 777 ./src/*` コマンドを実行する  
+
+10. Stripe設定
+　　Stripe決済機能を利用する場合は.envに以下を設定してください。
+   STRIPE_KEY=取得したキー
+   STRIPE＿SECRET＝取得したシークレットキー
 
 ## 使用技術
    
