@@ -13,7 +13,7 @@ body {
 }
 
 .auth-box {
-  width: 400px;
+  width: 680px;
   background: #fff;
   overflow: hidden;
   margin: 10px auto 0;
@@ -34,7 +34,7 @@ body {
 }
 
 .box-content {
-  padding: 60px 60px 40px;
+  padding: 60px 30px 40px;
 }
 
 .auth-title {
@@ -51,6 +51,7 @@ body {
 
 .auth-box input {
   width: 100%;
+  height: 50px;
   padding: 12px;
   margin-top: 5px;
   border: 1px solid #ccc;
@@ -71,6 +72,7 @@ body {
 .login-link {
   text-align: center;
   margin-top: 20px;
+  color: aqua;
 }
 
 .error {

@@ -28,10 +28,13 @@ DB_PASSWORD=laravel_pass
 ・　php artisan key:generate
 
 6. マイグレーションの実行
-・　php artisan migrate:fresh
+・　php artisan migrate
 
 7. シーディングの実行
 ・  php artisan db:seed
+
+8. ストレージリンク作成
+.   php artisan storage:link
 
 8. 実行確認  
    `http://localhost/` へアクセスして動作確認をする  

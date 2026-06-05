@@ -3,10 +3,7 @@
 @section('content')
 <div class="auth-box">
 
-  <div class="box-header">
-    <div class="logo">COACHTECH</div>
-  </div>
-
+  
   <div class="box-content">
     <h2 class="auth-title">ログイン</h2>
 
