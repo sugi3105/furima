@@ -43,7 +43,7 @@ DB_PASSWORD=laravel_pass
 10. Stripe設定
 　　Stripe決済機能を利用する場合は.envに以下を設定してください。
    STRIPE_KEY=取得したキー
-   STRIPE＿SECRET＝取得したシークレットキー
+   STRIPE_SECRET＝取得したシークレットキー
 
 ## 使用技術
    

@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
     {
         $request = new RegisterRequest();
 
-        Validator::make($input, $request->rules())->validate();
+        Validator::make($input, $request->rules(), $request->messages())->validate();
 
         $user = User::create([
             'name' => $input['name'],

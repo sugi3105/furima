@@ -38,13 +38,14 @@
     
     <div class="purchase-right">
 
-    <div class="purchase-summary">
+     <div class="purchase-summary">
         <p>商品代金</p>
         <p>¥{{ number_format($item->price) }}</p>
+     </div>
     </div>
 
     
-    <form action="/purchase/{{ $item->id }}" method="POST">
+     <form action="/purchase/{{ $item->id }}" method="POST">
         @csrf
 
         <select name="payment">
@@ -53,7 +54,7 @@
         </select>
 
       <button>購入する</button>
-    </form>
+     </form>
   </div>
 </div>
     

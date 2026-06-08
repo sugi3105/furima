@@ -55,7 +55,7 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->singleton(CreatesNewUsers::class, CreateNewUser::class);
 
        Fortify::authenticateUsing(function (Request $request) {
-
+        
        Validator::make($request->all(), [
         'email' => ['required'],
         'password' => ['required'],
