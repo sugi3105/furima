@@ -87,4 +87,45 @@ class LikeTest extends TestCase
 
         $response->assertDontSee('いいね商品');
     }
+
+    public function test_search_keyword_is_kept_in_mylist()
+    {
+        $user = User::factory()->create();
+
+        $item1 = Item::create([
+            'name' => '腕時計',
+            'price' => 1000,
+            'brand' => 'テスト',
+            'description' => 'テスト',
+            'img_url' => 'test.png',
+            'condition' => '良好',
+            'user_id' => $user->id,
+        ]);
+
+        $item2 = Item::create([
+            'name' => 'HDD',
+            'price' => 1000,
+            'brand' => 'テスト',
+            'description' => 'テスト',
+            'img_url' => 'test.png',
+            'condition' => '良好',
+            'user_id' => $user->id,
+        ]);
+
+        Like::create([
+            'user_id' => $user->id,
+            'item_id' => $item1->id,
+        ]);
+
+        Like::create([
+            'user_id' => $user->id,
+            'item_id' => $item2->id,
+        ]);
+
+        $response = $this->actingAs($user)
+                         ->get('/mylist?keyword=腕');
+
+        $response->assertSee('腕時計');
+        $response->assertDontSee('HDD');
+    }
 }

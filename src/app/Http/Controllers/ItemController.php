@@ -71,9 +71,9 @@ class ItemController extends Controller
             $query->where('user_id' , auth()->id());
         });
 
-        //if ($request->filled('keyword')) {
-        //$query->where('name', 'like', '%' . $request->keyword . '%');
-    //}
+        if ($request->filled('keyword')) {
+        $query->where('name', 'like', '%' . $request->keyword . '%');
+    }
 
         $items = $query->get();
 
