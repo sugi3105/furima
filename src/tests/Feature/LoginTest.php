@@ -12,7 +12,7 @@ class LoginTest extends TestCase
     /**
      * A basic feature test example.
      *
-     * @return void
+     * @return void/
      */
     public function test_email_is_required()
     {

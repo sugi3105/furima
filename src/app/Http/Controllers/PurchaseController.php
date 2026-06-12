@@ -25,13 +25,13 @@ class PurchaseController extends Controller
         //'payment_method_types' => ['card'],
         'payment_method_types' => [$paymentMethod],
         'line_items' => [[
-            'price_data' => [
-                'currency' => 'jpy',
-                'product_data' => [
-                    'name' => $item->name,
-                ],
-                'unit_amount' => $item->price,
-            ],
+        'price_data' => [
+        'currency' => 'jpy',
+        'product_data' => [
+        'name' => $item->name,
+          ],
+        'unit_amount' => $item->price,
+          ],
             'quantity' => 1,
         ]],
         'mode' => 'payment',

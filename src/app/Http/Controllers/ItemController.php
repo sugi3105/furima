@@ -80,8 +80,8 @@ class ItemController extends Controller
         return view('mylist', compact('items'));
     }
 
-        public function mypage()
-        {
+    public function mypage()
+    {
           $user = auth()->user();
 
           $sellItems = Item::where(
@@ -99,5 +99,5 @@ class ItemController extends Controller
                     'sellItems',
                     'purchasedItems'
     ));
-    }}
+ }}
 
