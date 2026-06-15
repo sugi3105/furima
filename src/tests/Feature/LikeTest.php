@@ -128,4 +128,55 @@ class LikeTest extends TestCase
         $response->assertSee('腕時計');
         $response->assertDontSee('HDD');
     }
+
+    public function test_user_can_like_item()
+    {
+        $user = User::factory()->create();
+
+            $item = Item::create([
+            'name' => '腕時計',
+            'price' => 15000,
+            'brand' => 'Rolax',
+            'description' => 'スタイリッシュな腕時計',
+            'img_url' => 'test.png',
+            'condition' => '良好',
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->actingAs($user)
+                         ->post('/item/' . $item->id . '/like');
+
+        $this->assertDatabaseHas('likes',[
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+        ]);
+    }
+
+    public function test_can_unlike_item()
+    {
+        $user = User::factory()->create();
+
+            $item = Item::create([
+            'name' => '腕時計',
+            'price' => 15000,
+            'brand' => 'Rolax',
+            'description' => 'スタイリッシュな腕時計',
+            'img_url' => 'test.png',
+            'condition' => '良好',
+            'user_id' => $user->id,
+        ]);
+
+        Like::create([
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+        ]);
+
+        $this->actingAs($user)
+             ->post('/item/' . $item->id . '/like');
+
+        $this->assertDatabaseMissing('likes', [
+            'user_id' => $user->id,
+            'item_id' => $item->id,
+        ]);
+    }
 }
