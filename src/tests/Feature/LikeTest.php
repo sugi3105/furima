@@ -156,7 +156,7 @@ class LikeTest extends TestCase
     {
         $user = User::factory()->create();
 
-            $item = Item::create([
+        $item = Item::create([
             'name' => '腕時計',
             'price' => 15000,
             'brand' => 'Rolax',
