@@ -7,7 +7,7 @@
   <div class="box-content">
     <h2 class="auth-title">ログイン</h2>
 
-    <form method="POST" action="/login">
+    <form method="POST" action="/login" novalidate>
       @csrf
 
       <label>メールアドレス</label>

@@ -72,14 +72,10 @@ class FortifyServiceProvider extends ServiceProvider
             'email' => ['ログイン情報が登録されていません'],
           ]);
     }
-       if (
-           !$user->hasVerifiedEmail() &&
-           !session()->has('verification-mail-sent')
-         )  {
-           $user->sendEmailVerificationNotification();
-
-           session(['verification-mail-sent' => true]);
-        }
+       //if (
+          // !$user->hasVerifiedEmail()) {
+           //$user->sendEmailVerificationNotification();
+       // }
        
       return $user;
 });

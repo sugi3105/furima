@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function() {
 
     return redirect('/mypage/profile');
 
- })->middleware(['signed'])->name('verification.verify');
+ })->middleware(['auth', 'signed'])->name('verification.verify');
 
  
  Route::middleware('verified')->group(function() {
@@ -61,6 +61,7 @@ Route::middleware('auth')->group(function() {
  
  Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
  Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
+ 
 });
 });
 

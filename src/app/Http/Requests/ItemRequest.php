@@ -29,6 +29,7 @@ class ItemRequest extends FormRequest
           'description' => 'required',
           'img_url' => 'required|image',
           'condition' => 'required',
+          'category' => 'required',
         ];
     }
 
@@ -37,7 +38,11 @@ class ItemRequest extends FormRequest
     return [
         'name.required' => '商品名は必須です',
         'price.required' => '価格は必須です',
-        'img_url.url' => '正しいURLを入力してください',
+        'img_url.required' => '商品画像を選択してください',
+        'img_url.image' => '画像ファイルを選択してください',
+        'category.required' => 'カテゴリーを選択してください',
+        'condition.required' => '商品の状態を選択してください',
+        'description.required' => '商品の説明を入力してください',
     ];
 
 

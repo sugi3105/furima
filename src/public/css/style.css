@@ -244,6 +244,54 @@ item-actions {
   align-items: center;
 }
 
+.purchase-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 50px auto;
+  gap: 60px;
+}
+
+.purchase-left {
+  flex: 2;
+}
+
+.purchase-right {
+  flex: 1;
+}
+
+.purchase-summary {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.purchase-summary p {
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.purchase-summary p:last-child {
+  border-bottom: none;
+}
+
+.purchase-right button {
+  width: 100%;
+  padding: 12px;
+  background: #ff5a5f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.purchase-right select,
+.payment select {
+  width: 100%;
+  padding: 10px;
+  margin: 20px 0;
+}
+
 .tab {
   text-decoration: none;
   color: #000;

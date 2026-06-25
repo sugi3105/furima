@@ -1,10 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
 
 <div class="verify-box">
    
-   <img src="/images/logo.svg">
 
    <p>
     登録していただいたメールアドレスに認証メールを送付しました。
