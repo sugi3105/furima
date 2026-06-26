@@ -2,41 +2,78 @@
 
 @section('content')
 
-<div class="purchase-left">
-
- <div class="purchase-item-info">
-    
-    <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
-     <div>
-       <h2>
-        {{ $item->name }}</h2>
-    <div class="payment">
-        <h3>支払い方法</h3>
-
-        <select name="payment">
-            <option>コンビニ支払い</option>
-            <option>カード支払い</option>
-        </select>
-    </div>
-
-    <hr>
-        <p>¥{{ number_format($item->price) }}</p>
-    </div>
-
-    <div class="purchase-summary">
-        <p>カード支払い</p>
-    </div>
+<div class="purchase-container">
 
     <form action="/purchase/{{ $item->id }}" method="POST">
         @csrf
 
-        <select name="payment">
-            <option value="konbini">コンビニ支払い</option>
-            <option value="card">カード支払い</option>
-        </select>
+        <div class="purchase-left">
 
-      <button>購入する</button>
+            <div class="purchase-item-info">
+                <img src="{{ Str::startsWith($item->img_url, 'http')
+                    ? $item->img_url
+                    : asset('storage/' . $item->img_url) }}">
+
+                <div>
+                    <h2>{{ $item->name }}</h2>
+                    <p>¥{{ number_format($item->price) }}</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="payment">
+                <h3>支払い方法</h3>
+
+                <select name="payment">
+                    <option value="">選択してください</option>
+                    <option value="konbini">コンビニ支払い</option>
+                    <option value="card">カード支払い</option>
+                </select>
+            </div>
+
+            <hr>
+
+            <div class="address">
+                <h3>配送先</h3>
+
+                @if($item->shipping_address)
+                    <p>{{ $item->shipping_address }}</p>
+                @else
+                    <p>{{ session('address', $user->address) }}</p>
+                @endif
+
+                <a href="/purchase/address/{{ $item->id }}">
+                    変更する
+                </a>
+            </div>
+
+        </div>
+
+        <div class="purchase-right">
+
+            <div class="purchase-summary">
+
+                <div class="summary-row">
+                    <span>商品代金</span>
+                    <span>¥{{ number_format($item->price) }}</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>支払い方法</span>
+                    <span>選択してください</span>
+                </div>
+
+            </div>
+
+            <button type="submit" class="purchase-btn">
+                購入する
+            </button>
+
+        </div>
+
     </form>
-  </div>
+
+</div>
 
 @endsection
