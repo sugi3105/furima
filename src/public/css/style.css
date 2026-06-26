@@ -186,7 +186,7 @@ body {
   object-fit: cover;
 }
 
-item-actions {
+.item-actions {
   display: flex;
   gap: 20px;
   align-items: center;
@@ -351,4 +351,28 @@ item-actions {
   padding: 10px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.tabs{
+    display:flex;
+    gap:40px;
+    border-bottom:1px solid #ddd;
+}
+
+.items{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
 }

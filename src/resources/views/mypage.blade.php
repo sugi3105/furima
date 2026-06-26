@@ -1,35 +1,47 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="auth-box">
-  <div class="box-content">
+<div class="mypage">
 
-      <img src="{{ asset('storage/'. $user->profile_image) }}">
+   <div class="profile-header">
 
-      <h2>{{ $user->name }}</h2>
+      <div class="profile-user">
 
-      <a href="/mypage/profile">
+         <img src="{{ asset('storage/'. $user->profile_image) }}">
+         <h2>{{ $user->name }}</h2>
+      </div>
+
+      <a href="/mypage/profile" class="edit-btn">
         プロフィールを編集
       </a>
-
-      <h3>出品した商品</h3>
-
-  @foreach($sellItems as $item)
-     <div class="item-card">
-       <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
-       <p>{{ $item->name }}</p>
-       <p>{{ $item->name }}</p>
-     </div>
-  @endforeach
-
-      <h3>購入した商品</h3>
-
-  @foreach($purchasedItems as $item)
-    <div class="item-card">
-       <img src="{{ $item->img_url }}">
-       <p>{{ $item->name }}</p>
     </div>
-  @endforeach
+
+    <div class="profile-tab">
+      <a href="/mypage?page=sell">出品した商品</a>
+      <a href="/mypage?page=buy">購入した商品</a>
+    </div>
+
+    <div class="item-list">
+
+    @if(request('page') == 'buy')
+
+       @foreach($purchasedItems as $item)
+          <div class="item-card">
+             <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+             <p>{{ $item->name }}</p>
+          </div>
+        @endforeach
+
+    @else
+
+        @foreach($sellItems as $item)
+            <div class="item-card">
+              <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+              <p>{{ $item->name }}</p>
+            </div>
+        @endforeach
+
+     @endif
       
   </div>
 </div>
