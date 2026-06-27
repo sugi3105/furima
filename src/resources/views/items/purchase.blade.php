@@ -54,14 +54,12 @@
                 </a>
               </div>
 
-              <p>
-                〒{{ $user->postcode }}
-              </p>
-             @if($item->shipping_address)
-               <p>{{ $item->shipping_address }}</p>
-             @else
-               <p>{{ $user->address }}</p>
-             @endif
+               <p>〒{{ session('postcode', $user->postcode) }}</p>
+
+               <p>{{ session('address', $user->address) }}</p>
+
+               <p>{{ session('building', $user->building) }}</p>
+             
     
               </div>
 

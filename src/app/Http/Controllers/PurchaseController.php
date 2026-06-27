@@ -70,6 +70,12 @@ class PurchaseController extends Controller
 
     public function updateAddress(Request $request, Item $item)
     {
+        session([
+            'postcode' => $request->postcode,
+            'address' => $request->address,
+            'building' => $request->building,
+        ]);
+        
         $item->update([
             'shipping_address' => $request->address,
         ]);

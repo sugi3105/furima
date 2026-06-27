@@ -2,14 +2,36 @@
 
 @section('content')
 
-<h2>住所変更画面</h2>
+<div class="address-container">
+
+      <h2>住所の変更</h2>
 
 <form action="/purchase/address/{{ $item->id }}" method="POST">
     @csrf
 
-    <input type="text" name="address" value="{{ $user->address }}">
+    <div class="form-group">
+        <label>郵便番号</label>
+        <input type="text" name="postcode"
+               value="{{ old('postcode', $user->postcode) }}">
+
+    </div>
+
+    <div class="form-group">
+        <label>住所</label>
+        <input type="text" name="address"
+               value="{{ old('address', $user->address) }}">
+
+    </div>
+
+    <div class="form-group">
+        <label>建物名</label>
+        <input type="text" name="building"
+               value="{{ old('building', $user->building) }}">
+
+    </div>
+
     
-    <button type="submit">
+    <button type="submit" class="update-btn">
         更新する
     </button>
 </form>
