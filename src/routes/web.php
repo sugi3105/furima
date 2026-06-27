@@ -24,7 +24,7 @@ use Illuminate\Http\Request;
     //return view('welcome');
 Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}' , [ItemController::class, 'show']);
-Route::get('/mylist', [ItemController::class, 'mylist']);
+
 
 Route::middleware('auth')->group(function() {
 
@@ -40,9 +40,8 @@ Route::middleware('auth')->group(function() {
 
  })->middleware(['auth', 'signed'])->name('verification.verify');
 
- 
  Route::middleware('verified')->group(function() {
-
+ Route::get('/mylist', [ItemController::class, 'mylist']);
  Route::get('/sell' , [ItemController::class, 'create']);
  Route::post('/sell' , [ItemController::class, 'store']);
 

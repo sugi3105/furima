@@ -245,14 +245,16 @@ body {
 }
 
 .purchase-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
   max-width: 1200px;
   margin: 50px auto;
-  gap: 60px;
 }
 
+.purchase-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: self-start;
+  gap: 60px;
+}
 .purchase-left {
   flex: 2;
 }
@@ -263,12 +265,12 @@ body {
 
 .purchase-summary {
   border: 1px solid #ccc;
-  margin-bottom: 20px;
 }
 
-.purchase-summary p {
-  margin: 0;
-  padding: 20px;
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  padding:25px 20px;
   border-bottom: 1px solid #ccc;
 }
 

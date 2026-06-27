@@ -14,7 +14,7 @@
                     ? $item->img_url
                     : asset('storage/' . $item->img_url) }}">
 
-                <div>
+                <div class="item-text">
                     <h2>{{ $item->name }}</h2>
                     <p>¥{{ number_format($item->price) }}</p>
                 </div>
@@ -22,33 +22,50 @@
 
             <hr>
 
-            <div class="payment">
+            <div class="payment-section">
                 <h3>支払い方法</h3>
 
                 <select name="payment">
                     <option value="">選択してください</option>
-                    <option value="konbini">コンビニ支払い</option>
-                    <option value="card">カード支払い</option>
+                    <option value="konbini"
+                        {{ old('payment') == 'konbini' ? 'selected' : '' }}>
+                        コンビニ支払い
+                    </option>
+                    <option value="card"
+                        {{ old('payment') == 'card' ? 'selected' : '' }}>
+                        カード支払い
+                    </option>
                 </select>
+
+                @error('payment')
+                  <p class="error">{{ $message }}</p>
+                @enderror
+
             </div>
 
             <hr>
+            <div class="address-section">
 
-            <div class="address">
+              <div class="address-header">
                 <h3>配送先</h3>
-
-                @if($item->shipping_address)
-                    <p>{{ $item->shipping_address }}</p>
-                @else
-                    <p>{{ session('address', $user->address) }}</p>
-                @endif
 
                 <a href="/purchase/address/{{ $item->id }}">
                     変更する
                 </a>
-            </div>
+              </div>
 
-        </div>
+              <p>
+                〒{{ $user->postcode }}
+              </p>
+             @if($item->shipping_address)
+               <p>{{ $item->shipping_address }}</p>
+             @else
+               <p>{{ $user->address }}</p>
+             @endif
+    
+              </div>
+
+            </div>
 
         <div class="purchase-right">
 

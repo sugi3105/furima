@@ -18,6 +18,15 @@ class PurchaseController extends Controller
 
     public function store(Request $request, Item $item)
     {
+        $request->validate(
+          [
+            'payment' => 'required|in:card,konbini',
+          ],
+          [
+            'payment.required' => '支払方法を選択してください',
+          ]
+        );
+
         Stripe::setApiKey(config('services.stripe.secret'));
         $paymentMethod = $request->payment;
 
