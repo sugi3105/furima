@@ -25,7 +25,7 @@
             <div class="payment-section">
                 <h3>支払い方法</h3>
 
-                <select name="payment">
+                <select name="payment" id="payment-select">
                     <option value="">選択してください</option>
                     <option value="konbini"
                         {{ old('payment') == 'konbini' ? 'selected' : '' }}>
@@ -76,7 +76,7 @@
 
                 <div class="summary-row">
                     <span>支払い方法</span>
-                    <span>選択してください</span>
+                    <span id="payment-display">選択してください</span>
                 </div>
 
             </div>
@@ -90,5 +90,22 @@
     </form>
 
 </div>
+
+<script>
+const paymentSelect = document.getElementById('payment-select');
+const paymentDisplay = document.getElementById('payment-display');
+
+paymentSelect.addEventListener('change', function () {
+
+    if (this.value === 'konbini') {
+        paymentDisplay.textContent = 'コンビニ支払い';
+    } else if (this.value === 'card') {
+        paymentDisplay.textContent = 'カード支払い';
+    } else {
+        paymentDisplay.textContent = '選択してください';
+    }
+
+});
+</script>
 
 @endsection

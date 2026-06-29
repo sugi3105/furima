@@ -47,8 +47,9 @@ class ProfileTest extends TestCase
         $this->actingAs($user)
              ->post('/mypage/profile', [
                 'name' => $user->name,
-                'postcode' => '',
-                'address' => '',
+                'postcode' => '123-4567',
+                'address' => '奈良県奈良市',
+                'building' => '',
                 'profile_image' => $file,
              ]);
 

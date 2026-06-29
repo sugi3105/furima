@@ -59,7 +59,7 @@ class ParchaseTest extends TestCase
         ]);
         
         $response = $this->actingAs($user)
-                         ->get('/mypage');
+                         ->get('/mypage?page=buy');
 
         $response->assertSee('購入商品');
     }

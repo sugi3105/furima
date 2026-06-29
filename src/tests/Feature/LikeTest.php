@@ -11,6 +11,7 @@ use App\Models\Like;
 
 class LikeTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *

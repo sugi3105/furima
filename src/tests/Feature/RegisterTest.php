@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class RegisterTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
@@ -106,7 +107,7 @@ class RegisterTest extends TestCase
             'password' => 'password123',
             'password_confirmation' => 'password123',
         ]);
-
+        
         $this->assertDatabaseHas('users',[
             'email' => 'test@ezweb.ne.jp',
         ]);

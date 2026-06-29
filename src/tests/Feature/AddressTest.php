@@ -44,7 +44,11 @@ class AddressTest extends TestCase
     public function test_updated_address_is_displayed_on_purchase_page()
     {
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            'postcode' => '6300000',
+            'address' => '奈良県奈良市',
+            'building' => 'テストマンション',
+        ]);
 
         $item = Item::create([
             'name' => '腕時計',
@@ -54,7 +58,6 @@ class AddressTest extends TestCase
             'img_url' => 'test.png',
             'condition' => '良好',
             'user_id' => $user->id,
-            'shipping_address' => '奈良県奈良市',
         ]);
 
         $response = $this->actingAs($user)
