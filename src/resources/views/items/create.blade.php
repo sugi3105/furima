@@ -49,15 +49,15 @@
         <option value="良好"
             {{ old('condition') == '良好' ? 'selected' : '' }}>良好</option>
 
-        < value="目立った傷や汚れなし"
+        <option value="目立った傷や汚れなし"
             {{ old('condition') == '目立った傷や汚れなし' ? 'selected' : '' }}>目立った傷や汚れなし
         </option>
 
-        < value="やや傷や汚れあり"
+        <option value="やや傷や汚れあり"
              {{ old('condition') == 'やや傷や汚れあり' ? 'selected' : '' }}>やや傷や汚れあり
         </option>
 
-        < value="状態が悪い"
+        <option value="状態が悪い"
               {{ old('condition') == '状態が悪い' ? 'selected' : '' }}>状態が悪い
         </option>
 

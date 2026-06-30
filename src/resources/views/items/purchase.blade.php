@@ -4,7 +4,7 @@
 
 <div class="purchase-container">
 
-    <form action="/purchase/{{ $item->id }}" method="POST">
+    <form action="/purchase/{{ $item->id }}" method="POST" class="purchase-form">
         @csrf
 
         <div class="purchase-left">

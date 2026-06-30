@@ -26,6 +26,7 @@
     @if(request('page') == 'buy')
 
        @foreach($purchasedItems as $item)
+       <a href="/item/{{ $item->id }}" class="item-card">
           <div class="item-card">
              <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
              <p>{{ $item->name }}</p>
@@ -35,7 +36,7 @@
     @else
 
         @foreach($sellItems as $item)
-            <div class="item-card">
+        <a href="/item/{{ $item->id }}" class="item-card">
               <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
               <p>{{ $item->name }}</p>
             </div>
