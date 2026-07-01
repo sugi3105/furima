@@ -27,10 +27,10 @@
 
        @foreach($purchasedItems as $item)
        <a href="/item/{{ $item->id }}" class="item-card">
-          <div class="item-card">
              <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
              <p>{{ $item->name }}</p>
           </div>
+       </a>
         @endforeach
 
     @else
@@ -39,9 +39,8 @@
         <a href="/item/{{ $item->id }}" class="item-card">
               <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
               <p>{{ $item->name }}</p>
-            </div>
         @endforeach
-
+        </a>
      @endif
       
   </div>
