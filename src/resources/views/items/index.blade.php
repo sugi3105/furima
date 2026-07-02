@@ -20,7 +20,6 @@
       </div>
 
       <p class="item-name">{{ $item->name }}</p>
-      <p class="item-price">¥{{ number_format($item->price) }}</p>
     </a>
   @endforeach
 </div>

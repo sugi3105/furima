@@ -24,16 +24,16 @@ DB_DATABASE=laravel_db
 DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
-5. アプリケーションキーの作成
+6. アプリケーションキーの作成
 ・　php artisan key:generate
 
-6. マイグレーションの実行
+7. マイグレーションの実行
 ・　php artisan migrate:fresh --seed
 
-7. ストレージリンク作成
+8. ストレージリンク作成
 .   php artisan storage:link
 
-8. メール認証設定
+9. メール認証設定
 
 メール認証には MailHog を使用しています。
 .env に以下を設定してください。
@@ -55,11 +55,11 @@ MAIL_FROM_NAME="${APP_NAME}"
 http://localhost:8025
 ```
 
-9. 実行確認  
+10. 実行確認  
    `http://localhost/` へアクセスして動作確認をする  
    エラーが出て表示できない場合は `sudo chmod -R 777 ./src/*` コマンドを実行する  
 
-10. Stripe設定
+11. Stripe設定
 　　Stripe決済機能を利用する場合は.envに以下を設定してください。
    STRIPE_KEY=取得したキー
    STRIPE_SECRET=取得したシークレットキー

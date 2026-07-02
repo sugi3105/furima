@@ -19,13 +19,13 @@
      
   <div class="header-nav">
     @auth
-      <a href="/mypage" class="btn">マイページ</a>
-      <a href="/sell" class="btn">出品</a>
-
       <form method="POST" action="/logout" style="display:inline;">
         @csrf
         <button class="btn logout-btn">ログアウト</button>
       </form>
+      <a href="/mypage" class="btn">マイページ</a>
+      <a href="/sell" class="btn">出品</a>
+ 
     @endauth
 
     @guest

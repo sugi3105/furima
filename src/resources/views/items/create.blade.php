@@ -10,17 +10,19 @@
        enctype="multipart/form-data" class="sell-form">
     @csrf
   
-    <div class="form-group">
-      <label>商品画像</label>
+    <h3 class="section-title">商品画像</h3>
 
+    <div class="form-group">
       <input type="file" name="img_url">
       @error('img_url')
        <p class="error">{{ $message }}</p>
       @enderror
     </div>
 
+    <h3 class="section-title">商品の詳細</h3>
+
     <div class="form-group">
-      <h3>カテゴリー</h3>
+      <label>カテゴリー</label>
 
       <div class="category-list">
 
@@ -36,6 +38,10 @@
           <span>{{ $category->name }}</span>
          </label>
         @endforeach
+
+        @error('categories')
+           <p class="error">{{ $message }}</p>
+        @enderror
       </div>
     </div>
 
@@ -67,6 +73,8 @@
         <p class="error">{{ $message }}</p>
       @enderror
     </div>
+
+    <h3 class="section-title">商品名と説明</h3>
 
     <div class="form-group">
       <label>商品名</label>
@@ -104,6 +112,9 @@
 
     <div class="form-group">
       <label>販売価格</label>
+
+      <div class="price-input">
+        <span>¥</span>
 
       <input type="number"
              name="price"

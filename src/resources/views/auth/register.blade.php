@@ -7,17 +7,17 @@
   <div class="box-content">
     <h2 class="auth-title">会員登録</h2>
 
-    <form method="POST" action="/register">
+    <form method="POST" action="/register" novalidate>
       @csrf
 
       <label>ユーザー名</label>
-      <input type="text" name="name">
+      <input type="text" name="name" value="{{ old('name') }}">
       @error('name')
        <div class="error">{{ $message }}</div>    
       @enderror
 
       <label>メールアドレス</label>
-      <input type="email" name="email">
+      <input type="email" name="email" value="{{ old('email') }}">
       @error('email')
        <div class="error">{{ $message }}</div>
       @enderror
