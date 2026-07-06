@@ -81,21 +81,29 @@ body {
 }
 
 .profile-image {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
 }
 
 .avatar {
   width: 80px;
   height: 80px;
-  background-color: #ddd;
+  background: #ddd;
   border-radius: 50%;
-  margin: 0 auto 10px;
+  flex-shrink: 0;
 }
 
 .image-btn {
-  font-size: 12px;
-  padding: 5px 10px;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 2px solid #ff5a5f;
+  color: #ff5a5f;
+  background: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .header {
@@ -168,15 +176,15 @@ body {
 }
 .item-detail {
   display: flex;
-  gap: 60px;
-  max-width: 1200px;
+  gap: 40px;
+  max-width: 1100px;
   margin: 60px auto;
   align-items: flex-start;
 }
 
 .item-image {
-  width: 600px;
-  height: 600px;
+  width: 480px;
+  height: 480px;
   flex-shrink: 0;
 }
 
@@ -186,23 +194,135 @@ body {
   object-fit: cover;
 }
 
+.item-condition {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.condition-title {
+  font-weight: bold;
+}
+
+.condition-value {
+  color: #555;
+}
+
 .item-actions {
   display: flex;
+  align-items: flex-start;
   gap: 20px;
+  margin-bottom: 20px;
+}
+.like-area,
+.item-comment-icon {
+  display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+.like-area img,
+.item-comment-icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.like-area p,
+.item-comment-icon p {
+  margin: 4px 0 0;
+}
+
+.like-area form {
+  margin: 0;
+}
+
+.like-area button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info textarea {
+  width: 100%;
+  max-width: 450px;
+  height: 120px;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.price {
+  font-size:32px;
+  font-weight:bold;
+}
+
+.price span {
+  font-size:18px;
+  font-weight:normal;
 }
 
 .comment-icon {
   text-align: center;
 }
 
+.comment-user{
+  display:flex;
+   align-items:center;
+  gap:10px;
+   margin:20px 0 10px;
+}
+
+.comment-icon{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#ddd;
+}
+
+.comment-content{
+  background:#f3f3f3;
+  padding:12px;
+  border-radius:4px;
+}
+
+.comment-btn {
+  width: 100%;
+  max-width: 450px;
+  padding: 12px;
+  margin-top: 20px;
+  background: #ff5555;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.comment-btn:hover {
+  background: #e64a4a;
+}
+
 .buy-btn {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin-top: 20px;
+  padding: 12px 0;
   background: red;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  margin: 20px 0;
-  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
 }
 
 .sold {
@@ -348,13 +468,31 @@ body {
 }
 
 .address-container {
-    width: 600px;
-    margin: 50px auto;
+  width: 600px;
+  margin: 50px auto;
 }
 
 .address-container h2 {
-    text-align: center;
-    margin-bottom: 40px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.address-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-header a {
+  color: #0073cc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 30px 0;
 }
 
 
@@ -472,6 +610,12 @@ body {
     gap: 30px;
 }
 
+.profile-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
 .tabs{
     display:flex;
     gap:40px;
@@ -495,6 +639,49 @@ body {
     margin-top: 30px;
 }
 
+.verify-box p {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.verify-box p:first-child {
+    margin-bottom: 0;
+}
+
+.verify-message {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: -8px;
+    margin-bottom: bold;
+}
+
+.verify-box {
+  width: 680px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.verify-btn {
+  display: inline-block;
+  margin: 30px 0;
+  padding: 12px 28px;
+  border: 1px solid #999;
+  border-radius: 4px;
+  color: #000;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.resend-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 16px;
+}
 @media (max-width: 768px) {
 
   .header {

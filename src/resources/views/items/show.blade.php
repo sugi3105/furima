@@ -11,7 +11,10 @@
   <div class="item-info">
     <h2>{{ $item->name }}</h2>
     <p class="brand-name">{{ $item->brand }}</p>
-    <p>¥{{ number_format($item->price) }}</p>
+    <p class="price">
+      ¥{{ number_format($item->price) }}
+      <span>(税込)</span>
+    </p>
 
     <div class="item-actions">
       @php
@@ -33,7 +36,7 @@
        <p>{{ $item->likes->count() }}</p>
       </div>
 
-      <div class="comment-icon">
+      <div class="item-comment-icon">
         <img src="{{ asset('images/comment.png') }}">
         <p>{{ $item->comments->count() }}</p>   
       </div>
@@ -54,22 +57,29 @@
 
       @foreach($item->categories as $category)
 
-     <span class="category-display">
-      {{ $category->name }}
-     </span>
+      <span class="category-display">
+         {{ $category->name }}
+      </span>
 
       @endforeach
     </div>
 
-    <p>商品の状態:{{ $item->condition }}</p>
+    <div class="item-condition">
+       <span class="condition-title">商品の状態</span>
+       <span class="condition-value">{{ $item->condition }}</span>
+    </div>
     
-
-
     <h3>コメント({{ $item->comments->count() }})</h3>
 
     @foreach($item->comments as $comment)
-      <p>{{ $comment->user->name }}</p>
-      <p>{{ $comment->content }}</p>
+    <div class="comment-user">
+      <div class="comment-icon"></div>
+        <span>{{ $comment->user->name }}</span> 
+    </div>
+
+      <p class="comment-content">
+        {{ $comment->content }}
+      </p>
     @endforeach
 
     <form method="POST" action="/item/{{ $item->id }}/comment">
@@ -80,7 +90,9 @@
     @enderror
     
       <textarea name="content"></textarea>
-      <button>コメントする</button>
+      <button class="comment-btn">
+        コメントを送信する
+      </button>
     </form>
 
   </div>

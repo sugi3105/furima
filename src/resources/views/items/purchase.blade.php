@@ -59,12 +59,11 @@
                <p>{{ session('address', $user->address) }}</p>
 
                <p>{{ session('building', $user->building) }}</p>
-             
-    
+             <hr>
               </div>
-
             </div>
 
+            
         <div class="purchase-right">
 
             <div class="purchase-summary">

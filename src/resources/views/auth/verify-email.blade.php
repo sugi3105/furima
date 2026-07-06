@@ -9,18 +9,18 @@
     登録していただいたメールアドレスに認証メールを送付しました。
    </p>
 
-   <p>
+   <p class="verify-message">
     メール認証を完了してください。
    </p>
 
-   <a href="http://localhost:8025">
+   <a href="http://localhost:8025" class="verify-btn">
     認証はこちらから
    </a>
 
    <form method="POST" action="{{ route('verification.send') }}">
      @csrf
 
-     <button>
+     <button class="resend-btn">
         認証メールを再送する
      </button>
    </form>

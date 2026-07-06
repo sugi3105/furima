@@ -4,7 +4,7 @@
 <div class="auth-box">
 
  <div class="box-content">
-    <h2 class="auth-title">プロフィール設定</h2>
+    <h2 class="profile-title">プロフィール設定</h2>
 
     <form method="POST" action="/mypage/profile"
           enctype="multipart/form-data">
@@ -12,7 +12,14 @@
 
     <div class="profile-image">
         <div class="avatar"></div>
-        <input type="file" name="profile_image">
+      
+        <label for="profile_image" class="image-btn">
+          画像を選択する
+        </label>
+
+        <input type="file"
+               id="profile_image"
+               name="profile_image" hidden>
     </div>
 
        <label>ユーザー名</label>
