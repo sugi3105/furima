@@ -50,19 +50,20 @@
     <p>{{ $item->description }}</p>
 
     <h3>商品情報</h3>
-
+  <div class="category-row">
     <p>カテゴリー</p>
 
     <div class="category-list">
 
       @foreach($item->categories as $category)
 
-      <span class="category-display">
+       <span class="category-display">
          {{ $category->name }}
-      </span>
+       </span>
 
       @endforeach
     </div>
+  </div>
 
     <div class="item-condition">
        <span class="condition-title">商品の状態</span>

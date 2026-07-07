@@ -10,10 +10,15 @@
        enctype="multipart/form-data" class="sell-form">
     @csrf
   
-    <h3 class="section-title">商品画像</h3>
+    <h3 class="image-title">商品画像</h3>
 
-    <div class="form-group">
-      <input type="file" name="img_url">
+    <div class="form-group image-upload">
+
+    <label for="img_url" class="image-select-btn">
+      画像を選択する
+    </label>
+
+    <input type="file" id="img_url" name="img_url" hidden>
       @error('img_url')
        <p class="error">{{ $message }}</p>
       @enderror

@@ -14,7 +14,7 @@
       <a href="/mypage/profile" class="edit-btn">
         プロフィールを編集
       </a>
-    </div>
+   </div>
 
     <div class="profile-tab">
       <a href="/mypage?page=sell">出品した商品</a>
@@ -29,18 +29,19 @@
        <a href="/item/{{ $item->id }}" class="item-card">
              <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
              <p>{{ $item->name }}</p>
-          </div>
        </a>
-        @endforeach
+       @endforeach
 
     @else
 
         @foreach($sellItems as $item)
-        <a href="/item/{{ $item->id }}" class="item-card">
+           <a href="/item/{{ $item->id }}" class="item-card">
               <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
               <p>{{ $item->name }}</p>
+           </a>
         @endforeach
-        </a>
+      
+      
      @endif
       
   </div>

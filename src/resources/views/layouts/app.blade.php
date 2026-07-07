@@ -30,7 +30,8 @@
 
     @guest
       <a href="/login" class="btn">ログイン</a>
-      <a href="/register" class="btn">登録</a>
+      <a href="/mypage" class="btn">マイページ</a>
+      <a href="/sell" class="btn">出品</a>
     @endguest
   </div>
 </header>
