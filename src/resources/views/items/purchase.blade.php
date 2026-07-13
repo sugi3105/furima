@@ -4,38 +4,38 @@
 
 <div class="purchase-container">
 
-    <form action="/purchase/{{ $item->id }}" method="POST" class="purchase-form">
-        @csrf
+  <form action="/purchase/{{ $item->id }}" method="POST" class="purchase-form">
+   @csrf
 
-        <div class="purchase-left">
+    <div class="purchase-left">
 
-            <div class="purchase-item-info">
-                <img src="{{ Str::startsWith($item->img_url, 'http')
-                    ? $item->img_url
-                    : asset('storage/' . $item->img_url) }}">
+       <div class="purchase-item-info">
+          <img src="{{ Str::startsWith($item->img_url, 'http')
+             ? $item->img_url
+             : asset('storage/' . $item->img_url) }}">
 
-                <div class="item-text">
-                    <h2>{{ $item->name }}</h2>
-                    <p>¥{{ number_format($item->price) }}</p>
-                </div>
-            </div>
+         <div class="item-text">
+            <h2>{{ $item->name }}</h2>
+            <p>¥{{ number_format($item->price) }}</p>
+         </div>
+        </div>
 
-            <hr>
+        <hr>
 
-            <div class="payment-section">
-                <h3>支払い方法</h3>
+        <div class="payment-section">
+            <h3>支払い方法</h3>
 
-                <select name="payment" id="payment-select">
-                    <option value="">選択してください</option>
-                    <option value="konbini"
-                        {{ old('payment') == 'konbini' ? 'selected' : '' }}>
-                        コンビニ支払い
-                    </option>
-                    <option value="card"
-                        {{ old('payment') == 'card' ? 'selected' : '' }}>
-                        カード支払い
-                    </option>
-                </select>
+            <select name="payment" id="payment-select">
+                <option value="">選択してください</option>
+                <option value="konbini"
+                    {{ old('payment') == 'konbini' ? 'selected' : '' }}>
+                      コンビニ支払い
+                </option>
+                <option value="card"
+                    {{ old('payment') == 'card' ? 'selected' : '' }}>
+                      カード支払い
+                </option>
+            </select>
 
                 @error('payment')
                   <p class="error">{{ $message }}</p>
@@ -83,7 +83,10 @@
             <button type="submit" class="purchase-btn">
                 購入する
             </button>
-
+            
+            @error('address')
+               <p class="error">{{ $message }}</p>
+            @enderror
         </div>
 
     </form>

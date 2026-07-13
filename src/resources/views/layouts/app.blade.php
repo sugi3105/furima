@@ -24,14 +24,14 @@
         <button class="btn logout-btn">ログアウト</button>
       </form>
       <a href="/mypage" class="btn">マイページ</a>
-      <a href="/sell" class="btn">出品</a>
+      <a href="/sell" class="sell-btn">出品</a>
  
     @endauth
 
     @guest
       <a href="/login" class="btn">ログイン</a>
       <a href="/mypage" class="btn">マイページ</a>
-      <a href="/sell" class="btn">出品</a>
+      <a href="/sell" class="sell-btn">出品</a>
     @endguest
   </div>
 </header>

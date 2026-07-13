@@ -27,6 +27,17 @@ class PurchaseController extends Controller
           ]
         );
 
+        $user = auth()->user();
+
+        $postcode = session('postcode', $user->postcode);
+        $address = session('address', $user->address);
+
+        if (empty($postcode) || empty($address)) {
+            return back()->withErrors([
+                'address' => '配送先を登録してください'
+            ])->withInput();
+        }
+
         Stripe::setApiKey(config('services.stripe.secret'));
         $paymentMethod = $request->payment;
 
@@ -70,6 +81,15 @@ class PurchaseController extends Controller
 
     public function updateAddress(Request $request, Item $item)
     {
+       $request->validate([
+          'postcode' => ['required', 'regex:/^\d{3}-\d{4}$/'],
+          'address' => ['required'],
+       ],[
+          'postcode.required' => '郵便番号を入力してください',
+          'postcode.regex' => '郵便番号は123-4567形式で入力してください',
+          'address.required' => '住所を入力してください',
+       ]);
+       
         session([
             'postcode' => $request->postcode,
             'address' => $request->address,
