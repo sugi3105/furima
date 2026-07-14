@@ -71,7 +71,7 @@ http://localhost:8025
    `MySQL8.0.26`
 
 ## ER図
-![ER図](er.png)
+![ER図](ER.drawio.png)
 
 
 
