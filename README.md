@@ -1,4 +1,6 @@
 # furima
+
+## Laravel環境構築
 ```
 # GitHub から git clone する
 git clone git@github.com:sugi3105/furima.git
@@ -10,7 +12,6 @@ cd furima
 docker-compose up -d --build
 ```
 
-## Laravel環境構築
 1. `docker-compose exec php bash`
 2. `composer install`
 3. 'cp .env.example .env

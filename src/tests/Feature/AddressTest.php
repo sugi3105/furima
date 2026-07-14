@@ -32,7 +32,9 @@ class AddressTest extends TestCase
 
         $this->actingAs($user)
              ->post('/purchase/address/' . $item->id, [
+                 'postcode' => '630-0000',
                  'address' => '奈良県奈良市',
+                 'building' => '',
               ]);
 
         $this->assertDatabaseHas('items', [

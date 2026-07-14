@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Item;
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\ParchaseRequest;
 
 class PurchaseController extends Controller
 {
@@ -16,17 +18,8 @@ class PurchaseController extends Controller
         return view('items.purchase', compact('item', 'user'));
     }
 
-    public function store(Request $request, Item $item)
+    public function store(ParchaseRequest $request, Item $item)
     {
-        $request->validate(
-          [
-            'payment' => 'required|in:card,konbini',
-          ],
-          [
-            'payment.required' => '支払方法を選択してください',
-          ]
-        );
-
         $user = auth()->user();
 
         $postcode = session('postcode', $user->postcode);
@@ -79,17 +72,8 @@ class PurchaseController extends Controller
         return view('items.address', compact('item', 'user'));
     }
 
-    public function updateAddress(Request $request, Item $item)
+    public function updateAddress(AddressRequest $request, Item $item)
     {
-       $request->validate([
-          'postcode' => ['required', 'regex:/^\d{3}-\d{4}$/'],
-          'address' => ['required'],
-       ],[
-          'postcode.required' => '郵便番号を入力してください',
-          'postcode.regex' => '郵便番号は123-4567形式で入力してください',
-          'address.required' => '住所を入力してください',
-       ]);
-       
         session([
             'postcode' => $request->postcode,
             'address' => $request->address,
