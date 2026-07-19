@@ -13,6 +13,15 @@ class ItemController extends Controller
 {
     public function index(Request $request)
     {
+        if ($request->tab === 'mylist') {
+
+           if(!auth()->check()) {
+             return redirect('/login');
+           }
+
+           $items = auth()->user()->likedItems()->get();
+        } else {
+
         $query = Item::query();
 
         if ($request->filled('keyword')) {
@@ -24,7 +33,7 @@ class ItemController extends Controller
         }
 
         $items = $query->get();
-
+        }
         return view('items.index', compact('items'));
     }
 

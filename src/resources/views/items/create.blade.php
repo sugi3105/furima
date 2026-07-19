@@ -129,7 +129,7 @@
         <p class="error">{{ $message }}</p>
       @enderror
     </div>
-
+   </div>
     <button type="submit" class="sell-btn">
       出品する
     </button>

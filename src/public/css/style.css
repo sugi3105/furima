@@ -120,12 +120,20 @@ body {
   text-decoration: none;
 }
 
-.header .sell-btn {
+.header .header-sell-btn {
+  display: inline-block;
   background: #fff;
   color: #000;
+  text-decoration: none;
   padding: 8px 20px;
   border-radius: 4px;
-  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.header .header-sell-btn:hover {
+  opacity: 0.9;
 }
 
 .header-nav {
@@ -556,9 +564,9 @@ body {
 }
 
 .form-group select {
-    appearance: none;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath d='M2 2l6 6 6-6' stroke='%235F5F5F' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 15px center;
-    padding-right: 40px;
+  appearance: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='10'%3E%3Cpath d='M2 2l6 6 6-6' stroke='%235F5F5F' stroke-width='2' fill='none'/%3E%3C/svg%3E") no-repeat right 15px center;
+   padding-right: 40px;
 }
 
 .sell-container {
@@ -567,10 +575,23 @@ body {
 }
 
 .sell-container h2 {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 700;
-    margin: 50px 0;
+  text-align: center;
+   font-size: 36px;
+  font-weight: 700;
+  margin: 50px 0;
+}
+
+.sell-btn {
+  width: 100%;
+  margin-top: 40px;
+  padding: 12px;
+  background: #FF5555;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .image-title {
@@ -618,22 +639,6 @@ body {
   border-radius: 4px;
   font-size: 16px;
   resize: vertical;
-}
-
-.sell-btn {
-  display: inline-block;
-  padding: 8px 20px;
-  text-decoration: none;
-  background:#fff;
-  color: #000;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 4px;
-  line-height: 1;
-}
-
-.sell-btn:hover {
-  opacity: 0,9;
 }
 
 .price-input{

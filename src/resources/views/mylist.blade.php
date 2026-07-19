@@ -4,7 +4,7 @@
 
 <div class="item-tabs">
   <a href="/?keyword={{ request('keyword') }}" class="tab">おすすめ</a>
-  <a href="/mylist?keyword={{ request('keyword') }}" class="tab">マイリスト</a>
+  <a href="/?tab=mylist&keyword={{ request('keyword') }}" class="tab">マイリスト</a>
 </div>
 
 <div class="item-list">
