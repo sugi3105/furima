@@ -42,7 +42,7 @@ class ProfileRequest extends FormRequest
 
             'postcode.required' => '郵便番号を入力してください',
             'postcode.regex' => '郵便番号は123-4567形式で入力してください',
-            
+
             'address.required' => '住所を入力してください',
         ];
     }

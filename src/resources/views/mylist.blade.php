@@ -10,24 +10,21 @@
 <div class="item-list">
   @foreach($items as $item)
 
-    <a href="/item/{{ $item->id }}" class="item-card">
+  <a href="/item/{{ $item->id }}" class="item-card">
 
-      <div class="item-image-wrapper">
+    <div class="item-image-wrapper">
 
-        <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+      <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
 
-        @if($item->is_sold)
-          <p class="sold">Sold</p>
-        @endif
+      @if($item->is_sold)
+      <p class="sold">Sold</p>
+      @endif
 
-      </div>
+    </div>
 
-      <p class="item-name">{{ $item->name }}</p>
-      <p class="item-price">
-        ¥{{ number_format($item->price) }}
-      </p>
+    <p class="item-name">{{ $item->name }}</p>
 
-    </a>
+  </a>
 
   @endforeach
 </div>

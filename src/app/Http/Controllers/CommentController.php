@@ -9,14 +9,14 @@ use App\Models\Item;
 
 class CommentController extends Controller
 {
-   public function store(CommentRequest $request, Item $item)
-   {
-    Comment::create([
-        'user_id' => auth()->id(),
-        'item_id' => $item->id,
-        'content' => $request->content,
-    ]);
+    public function store(CommentRequest $request, Item $item)
+    {
+        Comment::create([
+            'user_id' => auth()->id(),
+            'item_id' => $item->id,
+            'content' => $request->content,
+        ]);
 
-    return back();
-}
+        return back();
+    }
 }

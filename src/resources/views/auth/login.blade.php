@@ -3,7 +3,7 @@
 @section('content')
 <div class="auth-box">
 
-  
+
   <div class="box-content">
     <h2 class="auth-title">ログイン</h2>
 
@@ -13,13 +13,13 @@
       <label>メールアドレス</label>
       <input type="email" name="email">
       @error('email')
-       <div class="error">{{ $message }}</div>
+      <div class="error">{{ $message }}</div>
       @enderror
 
       <label>パスワード</label>
       <input type="password" name="password">
       @error('password')
-       <div class="error">{{ $message }}</div>
+      <div class="error">{{ $message }}</div>
       @enderror
 
 

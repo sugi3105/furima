@@ -18,78 +18,78 @@
 
     <div class="item-actions">
       @php
-        $liked = $item->likes->where('user_id', auth()->id())->count();
+      $liked = $item->likes->where('user_id', auth()->id())->count();
       @endphp
-     <div class="like-area">
-       <form method="POST" action="/item/{{ $item->id }}/like">
-         @csrf
+      <div class="like-area">
+        <form method="POST" action="/item/{{ $item->id }}/like">
+          @csrf
 
-         <button type="submit" style="background:none; border:none;">
-           @if($liked)
-           <img src="{{ asset('images/heart_active.png') }}">
-           @else
-           <img src="{{ asset('images/heart_default.png') }}">
-           @endif
-         </button>
+          <button type="submit" style="background:none; border:none;">
+            @if($liked)
+            <img src="{{ asset('images/heart_active.png') }}">
+            @else
+            <img src="{{ asset('images/heart_default.png') }}">
+            @endif
+          </button>
         </form>
 
-       <p>{{ $item->likes->count() }}</p>
+        <p>{{ $item->likes->count() }}</p>
       </div>
 
       <div class="item-comment-icon">
         <img src="{{ asset('images/comment.png') }}">
-        <p>{{ $item->comments->count() }}</p>   
+        <p>{{ $item->comments->count() }}</p>
       </div>
     </div>
 
-      <a href="/purchase/{{ $item->id }}" class="buy-btn">
-       購入手続きへ
-      </a>
-      
+    <a href="/purchase/{{ $item->id }}" class="buy-btn">
+      購入手続きへ
+    </a>
+
     <h3>商品説明</h3>
     <p>{{ $item->description }}</p>
 
     <h3>商品情報</h3>
-  <div class="category-row">
-    <p>カテゴリー</p>
+    <div class="category-row">
+      <p>カテゴリー</p>
 
-    <div class="category-list">
+      <div class="category-list">
 
-      @foreach($item->categories as $category)
+        @foreach($item->categories as $category)
 
-       <span class="category-display">
-         {{ $category->name }}
-       </span>
+        <span class="category-display">
+          {{ $category->name }}
+        </span>
 
-      @endforeach
+        @endforeach
+      </div>
     </div>
-  </div>
 
     <div class="item-condition">
-       <span class="condition-title">商品の状態</span>
-       <span class="condition-value">{{ $item->condition }}</span>
+      <span class="condition-title">商品の状態</span>
+      <span class="condition-value">{{ $item->condition }}</span>
     </div>
-    
+
     <h3>コメント({{ $item->comments->count() }})</h3>
 
     @foreach($item->comments as $comment)
     <div class="comment-user">
       <div class="comment-icon"></div>
-        <span>{{ $comment->user->name }}</span> 
+      <span>{{ $comment->user->name }}</span>
     </div>
 
-      <p class="comment-content">
-        {{ $comment->content }}
-      </p>
+    <p class="comment-content">
+      {{ $comment->content }}
+    </p>
     @endforeach
 
     <form method="POST" action="/item/{{ $item->id }}/comment">
       @csrf
 
-    @error('content')
-     <p>{{ $message }}</p>
-    @enderror
-    
+      @error('content')
+      <p>{{ $message }}</p>
+      @enderror
+
       <textarea name="content"></textarea>
       <button class="comment-btn">
         コメントを送信する

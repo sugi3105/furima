@@ -12,38 +12,38 @@
       </div>
 
       <a href="/mypage/profile" class="edit-btn">
-        プロフィールを編集
+         プロフィールを編集
       </a>
    </div>
 
-    <div class="profile-tab">
+   <div class="profile-tab">
       <a href="/mypage?page=sell">出品した商品</a>
       <a href="/mypage?page=buy">購入した商品</a>
-    </div>
+   </div>
 
-    <div class="item-list">
+   <div class="item-list">
 
-    @if(request('page') == 'buy')
+      @if(request('page') == 'buy')
 
-       @foreach($purchasedItems as $item)
-       <a href="/item/{{ $item->id }}" class="item-card">
-             <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
-             <p>{{ $item->name }}</p>
-       </a>
-       @endforeach
+      @foreach($purchasedItems as $item)
+      <a href="/item/{{ $item->id }}" class="item-card">
+         <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+         <p>{{ $item->name }}</p>
+      </a>
+      @endforeach
 
-    @else
+      @else
 
-        @foreach($sellItems as $item)
-           <a href="/item/{{ $item->id }}" class="item-card">
-              <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
-              <p>{{ $item->name }}</p>
-           </a>
-        @endforeach
-      
-      
-     @endif
-      
-  </div>
+      @foreach($sellItems as $item)
+      <a href="/item/{{ $item->id }}" class="item-card">
+         <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+         <p>{{ $item->name }}</p>
+      </a>
+      @endforeach
+
+
+      @endif
+
+   </div>
 </div>
 @endsection

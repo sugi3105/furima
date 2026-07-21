@@ -35,22 +35,22 @@ class PurchaseController extends Controller
         $paymentMethod = $request->payment;
 
         $session = Session::create([
-        //'payment_method_types' => ['card'],
-        'payment_method_types' => [$paymentMethod],
-        'line_items' => [[
-        'price_data' => [
-        'currency' => 'jpy',
-        'product_data' => [
-        'name' => $item->name,
-          ],
-        'unit_amount' => $item->price,
-          ],
-            'quantity' => 1,
-        ]],
-        'mode' => 'payment',
-        'success_url' => url("/purchase/success/{$item->id}"),
-        'cancel_url' => url("/purchase/{$item->id}"),
-    ]);
+            //'payment_method_types' => ['card'],
+            'payment_method_types' => [$paymentMethod],
+            'line_items' => [[
+                'price_data' => [
+                    'currency' => 'jpy',
+                    'product_data' => [
+                        'name' => $item->name,
+                    ],
+                    'unit_amount' => $item->price,
+                ],
+                'quantity' => 1,
+            ]],
+            'mode' => 'payment',
+            'success_url' => url("/purchase/success/{$item->id}"),
+            'cancel_url' => url("/purchase/{$item->id}"),
+        ]);
 
         return redirect($session->url);
     }
@@ -79,13 +79,11 @@ class PurchaseController extends Controller
             'address' => $request->address,
             'building' => $request->building,
         ]);
-        
+
         $item->update([
             'shipping_address' => $request->address,
         ]);
 
         return redirect("/purchase/{$item->id}");
     }
-
-
 }

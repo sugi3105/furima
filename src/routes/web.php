@@ -21,46 +21,43 @@ use Illuminate\Http\Request;
 */
 
 //Route::get('/', function () {
-    //return view('welcome');
+//return view('welcome');
 Route::get('/', [ItemController::class, 'index']);
-Route::get('/item/{item_id}' , [ItemController::class, 'show']);
+Route::get('/item/{item_id}', [ItemController::class, 'show']);
 Route::get('/mylist', [ItemController::class, 'mylist']);
 
-Route::middleware('auth')->group(function() {
+Route::middleware('auth')->group(function () {
 
- Route::get('/email/verify', function() {
-    return view('auth.verify-email');
- })->name('verification.notice');
+   Route::get('/email/verify', function () {
+      return view('auth.verify-email');
+   })->name('verification.notice');
 
- Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+   Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
 
-    $request->fulfill();
+      $request->fulfill();
 
-    return redirect('/mypage/profile');
+      return redirect('/mypage/profile');
+   })->middleware(['auth', 'signed'])->name('verification.verify');
 
- })->middleware(['auth', 'signed'])->name('verification.verify');
+   Route::middleware('verified')->group(function () {
+      //Route::get('/mylist', [ItemController::class, 'mylist']);
+      Route::get('/sell', [ItemController::class, 'create']);
+      Route::post('/sell', [ItemController::class, 'store']);
 
- Route::middleware('verified')->group(function() {
- //Route::get('/mylist', [ItemController::class, 'mylist']);
- Route::get('/sell' , [ItemController::class, 'create']);
- Route::post('/sell' , [ItemController::class, 'store']);
+      Route::get('/mypage', [ItemController::class, 'mypage']);
 
- Route::get('/mypage', [ItemController::class, 'mypage']);
+      Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+      Route::post('/mypage/profile', [ProfileController::class, 'update']);
 
- Route::get('/mypage/profile', [ProfileController::class, 'edit']);
- Route::post('/mypage/profile', [ProfileController::class, 'update']);
+      Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
+      Route::post('/item/{item}/comment', [CommentController::class, 'store']);
 
- Route::post('/item/{item}/like', [LikeController::class, 'toggle']);
- Route::post('/item/{item}/comment', [CommentController::class, 'store']);
+      Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
+      Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
 
- Route::get('/purchase/{item}', [PurchaseController::class, 'show']);
- Route::post('/purchase/{item}', [PurchaseController::class, 'store']);
+      Route::get('/purchase/success/{item}', [PurchaseController::class, 'success']);
 
- Route::get('/purchase/success/{item}', [PurchaseController::class, 'success']);
- 
- Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
- Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
- 
+      Route::get('/purchase/address/{item}', [PurchaseController::class, 'editAddress']);
+      Route::post('/purchase/address/{item}', [PurchaseController::class, 'updateAddress']);
+   });
 });
-});
-

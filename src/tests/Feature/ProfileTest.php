@@ -22,18 +22,18 @@ class ProfileTest extends TestCase
         $user = User::factory()->create();
 
         $this->actingAs($user)
-             ->post('/mypage/profile', [
+            ->post('/mypage/profile', [
                 'name' => '山田太郎',
                 'postcode' => '123-4567',
                 'address' => '奈良県奈良市',
-             ]);
-        
+            ]);
+
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
             'name' => '山田太郎',
             'postcode' => '123-4567',
             'address' => '奈良県奈良市',
-        ]);      
+        ]);
     }
 
     public function test_profile_image_can_be_updated()
@@ -42,16 +42,16 @@ class ProfileTest extends TestCase
 
         $user = User::factory()->create();
 
-        $file = UploadedFile::fake()->create('test.png');
+        $file = UploadedFile::fake()->image('test.png');
 
         $this->actingAs($user)
-             ->post('/mypage/profile', [
+            ->post('/mypage/profile', [
                 'name' => $user->name,
                 'postcode' => '123-4567',
                 'address' => '奈良県奈良市',
                 'building' => '',
                 'profile_image' => $file,
-             ]);
+            ]);
 
         Storage::disk('public')->assertExists('profiles/' . $file->hashName());
 

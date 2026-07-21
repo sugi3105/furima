@@ -3,26 +3,25 @@
 @section('content')
 
 <div class="item-tabs">
-  <a href="/" class="tab">おすすめ</a>
-  <a href="/mylist" class="tab">マイリスト</a>
+  <a href="/?keyword={{ request('keyword') }}" class="tab">おすすめ</a>
+  <a href="/?tab=mylist&keyword={{ request('keyword') }}" class="tab">マイリスト</a>
 </div>
 
 <div class="item-list">
   @foreach($items as $item)
-    <a href="/item/{{ $item->id }}" class="item-card">
-      <div class="item-image-wrapper">
+  <a href="/item/{{ $item->id }}" class="item-card">
+    <div class="item-image-wrapper">
 
-       <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
+      <img src="{{ Str::startsWith($item->img_url, 'http') ? $item->img_url : asset('storage/' . $item->img_url) }}">
 
-       @if($item->is_sold)
-        <p class="sold">Sold</p>
-       @endif
-      </div>
+      @if($item->is_sold)
+      <p class="sold">Sold</p>
+      @endif
+    </div>
 
-      <p class="item-name">{{ $item->name }}</p>
-    </a>
+    <p class="item-name">{{ $item->name }}</p>
+  </a>
   @endforeach
 </div>
 
 @endsection
-

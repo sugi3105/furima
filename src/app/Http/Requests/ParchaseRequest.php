@@ -24,7 +24,7 @@ class ParchaseRequest extends FormRequest
     public function rules()
     {
         return [
-         'payment' => 'required|in:card,konbini',
+            'payment' => 'required|in:card,konbini',
         ];
     }
 

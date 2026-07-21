@@ -15,24 +15,30 @@ class ItemController extends Controller
     {
         if ($request->tab === 'mylist') {
 
-           if(!auth()->check()) {
-             return redirect('/login');
-           }
+            if (!auth()->check()) {
+                return redirect('/login');
+            }
 
-           $items = auth()->user()->likedItems()->get();
+            $query = auth()->user()->likedItems();
+
+            if ($request->filled('keyword')) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+            }
+
+            $items = $query->get();
         } else {
 
-        $query = Item::query();
+            $query = Item::query();
 
-        if ($request->filled('keyword')) {
-            $query->where('name', 'like', '%'. $request->keyword . '%');
-        }
+            if ($request->filled('keyword')) {
+                $query->where('name', 'like', '%' . $request->keyword . '%');
+            }
 
-        if (auth()->check()) {
-            $query->where('user_id', '!=', auth()->id());
-        }
+            if (auth()->check()) {
+                $query->where('user_id', '!=', auth()->id());
+            }
 
-        $items = $query->get();
+            $items = $query->get();
         }
         return view('items.index', compact('items'));
     }
@@ -46,24 +52,24 @@ class ItemController extends Controller
     public function create()
     {
         $categories = Category::all();
-          
+
         return view('items.create', compact('categories'));
     }
     public function store(ItemRequest $request)
     {
         $path = $request->file('img_url')
-                        ->store('items', 'public');
+            ->store('items', 'public');
 
         $item = Item::create([
-          'name' => $request->name,
-          'price' => $request->price,
-          'brand' => $request->brand,
-          'description' => $request->description,
-          'img_url' => $path,
-          'condition' => $request->condition,
-          'user_id' => auth()->id(),
+            'name' => $request->name,
+            'price' => $request->price,
+            'brand' => $request->brand,
+            'description' => $request->description,
+            'img_url' => $path,
+            'condition' => $request->condition,
+            'user_id' => auth()->id(),
         ]);
-        
+
 
         $item->categories()->sync($request->categories);
 
@@ -73,16 +79,16 @@ class ItemController extends Controller
     public function mylist(Request $request)
     {
         if (!auth()->check()) {
-        $items = collect();
-        return view('mylist', compact('items'));
-    }
+            $items = collect();
+            return view('mylist', compact('items'));
+        }
         $query = Item::whereHas('likes', function ($query) {
-            $query->where('user_id' , auth()->id());
+            $query->where('user_id', auth()->id());
         });
 
         if ($request->filled('keyword')) {
-        $query->where('name', 'like', '%' . $request->keyword . '%');
-    }
+            $query->where('name', 'like', '%' . $request->keyword . '%');
+        }
 
         $items = $query->get();
 
@@ -91,22 +97,22 @@ class ItemController extends Controller
 
     public function mypage()
     {
-          $user = auth()->user();
+        $user = auth()->user();
 
-          $sellItems = Item::where(
-                      'user_id',
-                       auth()->id()
-                       )->get();
+        $sellItems = Item::where(
+            'user_id',
+            auth()->id()
+        )->get();
 
-          $purchasedItems = Item::where(
-                       'purchaser_id',
-                       auth()->id()
-                        )->get();
+        $purchasedItems = Item::where(
+            'purchaser_id',
+            auth()->id()
+        )->get();
 
         return view('mypage', compact(
-                    'user',
-                    'sellItems',
-                    'purchasedItems'
-    ));
- }}
-
+            'user',
+            'sellItems',
+            'purchasedItems'
+        ));
+    }
+}
