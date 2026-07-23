@@ -2,23 +2,45 @@
 
 ## Laravel環境構築
 
-```
-# GitHub から git clone する
+1. リポジトリをクローンする
+
+```bash
 git clone git@github.com:sugi3105/furima.git
+```
 
-# clone した furima フォルダに移動する
+2. プロジェクトディレクトリへ移動する
+
+```bash
 cd furima
+```
 
-# docker でビルドする
+3. Dockerコンテナに入る
+
+```bash
 docker-compose up -d --build
 ```
 
-1. `docker-compose exec php bash`
-2. `composer install`
-3. `cp .env.example .env`
-4. `.envに以下の環境変数を追加`
+4. phpコンテナに入る
 
-```text
+```bash
+docker-compose exec php bash`
+```
+
+5. Composerパッケージをインストールする
+
+```bash
+composer install`
+```
+
+6. `.env` ファイルを作成する
+
+```bash
+`cp .env.example .env`
+```
+
+7. `.env`に以下の環境変数を追加`
+
+```env
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
@@ -27,16 +49,25 @@ DB_USERNAME=laravel_user
 DB_PASSWORD=laravel_pass
 ```
 
-5. アプリケーションキーの作成<br>
-   ・　php artisan key:generate
+8. アプリケーションキーの作成
 
-6. マイグレーションの実行<br>
-   ・　php artisan migrate:fresh --seed
+```bash
+   php artisan key:generate
+```
 
-7. ストレージリンク作成<br>
-   . php artisan storage:link
+9. マイグレーションの実行
 
-8. メール認証設定
+```bash
+   php artisan migrate:fresh --seed
+```
+
+10. ストレージリンク作成
+
+```bash
+   php artisan storage:link
+```
+
+11. メール認証設定
 
 メール認証には MailHog を使用しています。
 .env に以下を設定してください。
@@ -58,20 +89,35 @@ MAIL_FROM_NAME="${APP_NAME}"
 http://localhost:8025
 ```
 
-9. 実行確認  
-   `http://localhost/` へアクセスして動作確認をする  
-   エラーが出て表示できない場合は `sudo chmod -R 777 ./src/*` コマンドを実行する
+12. 実行確認
 
-10. Stripe設定
-    　　Stripe決済機能を利用する場合は.envに以下を設定してください。
-    STRIPE_KEY=取得したキー
-    STRIPE_SECRET=取得したシークレットキー
+```bash
+http://localhost/` へアクセスして動作確認をする
+```
+
+エラーが出て表示できない場合は、以下を実行してください
+
+```bash
+`sudo chmod -R 777 ./src/*`
+```
+
+13. Stripe設定
+
+Stripe決済機能を利用する場合は.envに以下を設定してください。
+
+```env
+STRIPE_KEY=取得したキー
+STRIPE_SECRET=取得したシークレットキー
+```
 
 ## 使用技術
 
-`php8.3.0`
-`Laravel8.83.27`
-`MySQL8.0.26`
+- php8.3.0
+- Laravel8.83.27
+- MySQL8.0.26
+- Docker
+- Mailhog
+- Stripe
 
 ## ER図
 
@@ -83,5 +129,6 @@ http://localhost:8025
 
 ## URL
 
-環境開発:http://localhost/
-phpMyAdmin: http://localhost:8080
+- 開発環境:http://localhost/
+- phpMyAdmin: http://localhost:8080
+- Mailhog: http://localhost:8025
