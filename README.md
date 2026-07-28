@@ -23,19 +23,19 @@ docker-compose up -d --build
 4. phpコンテナに入る
 
 ```bash
-docker-compose exec php bash`
+docker-compose exec php bash
 ```
 
 5. Composerパッケージをインストールする
 
 ```bash
-composer install`
+composer install
 ```
 
 6. `.env` ファイルを作成する
 
 ```bash
-`cp .env.example .env`
+cp .env.example .env
 ```
 
 7. `.env`に以下の環境変数を追加`
@@ -98,7 +98,7 @@ http://localhost/` へアクセスして動作確認をする
 エラーが出て表示できない場合は、以下を実行してください
 
 ```bash
-`sudo chmod -R 777 ./src/*`
+sudo chmod -R 777 ./src/*
 ```
 
 13. Stripe設定
