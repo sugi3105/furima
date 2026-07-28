@@ -93,10 +93,10 @@
       @csrf
 
       @error('content')
-      <p>{{ $message }}</p>
+      <p class="error">{{ $message }}</p>
       @enderror
 
-      <textarea name="content"></textarea>
+      <textarea name=" content"></textarea>
       <button class="comment-btn">
         コメントを送信する
       </button>

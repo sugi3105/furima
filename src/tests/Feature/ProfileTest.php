@@ -44,7 +44,7 @@ class ProfileTest extends TestCase
 
         $file = UploadedFile::fake()->image('test.png');
 
-        $this->actingAs($user)
+        $response = $this->actingAs($user)
             ->post('/mypage/profile', [
                 'name' => $user->name,
                 'postcode' => '123-4567',
